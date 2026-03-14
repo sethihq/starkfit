@@ -30,10 +30,15 @@ function calculateRemaining(targetTimestamp: number): CountdownResult {
   return { hours, minutes, seconds, formatted }
 }
 
+const INITIAL: CountdownResult = {
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  formatted: '--:--:--',
+}
+
 export function useCountdown(targetTimestamp: number): CountdownResult {
-  const [remaining, setRemaining] = useState(() =>
-    calculateRemaining(targetTimestamp),
-  )
+  const [remaining, setRemaining] = useState(INITIAL)
 
   useEffect(() => {
     setRemaining(calculateRemaining(targetTimestamp))
