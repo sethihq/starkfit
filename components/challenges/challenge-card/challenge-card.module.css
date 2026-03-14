@@ -6,6 +6,7 @@
   background-color: var(--color-c2);
   border: 1px solid var(--color-c4);
   border-radius: 0;
+  font-family: var(--font-sans);
   transition: border-color 150ms ease;
 
   @media (--hover) {
@@ -53,6 +54,7 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-c12);
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 

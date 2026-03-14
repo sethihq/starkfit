@@ -21,7 +21,7 @@
 .title {
   font-size: 24px;
   font-weight: 700;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--color-c12);
@@ -70,12 +70,14 @@
 .stepTitle {
   font-size: 16px;
   font-weight: 500;
+  font-family: var(--font-sans);
   color: var(--color-c12);
 }
 
 .stepDesc {
   margin-top: 6px;
   font-size: 14px;
+  font-family: var(--font-sans);
   color: var(--color-c8);
   line-height: 1.6;
 }

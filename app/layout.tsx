@@ -90,7 +90,7 @@ export default async function Layout({ children }: PropsWithChildren) {
     >
       {/* this helps to track Satus usage thanks to Wappalyzer */}
       <Script async>{`window.satusVersion = '${AppData.version}';`}</Script>
-      <body>
+      <body suppressHydrationWarning>
         {/* Skip link for keyboard navigation accessibility */}
         <Suspense fallback={null}>
           <Link

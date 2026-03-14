@@ -5,6 +5,7 @@
   padding: 14px 16px;
   background-color: var(--color-c2);
   border-bottom: 1px solid var(--color-c4);
+  font-family: var(--font-sans);
   transition: background-color 150ms ease;
 }
 

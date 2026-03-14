@@ -6,6 +6,7 @@
   max-width: 960px;
   margin: 0 auto;
   width: 100%;
+  font-family: var(--font-sans);
 }
 
 .backLink {
@@ -13,13 +14,13 @@
   align-items: center;
   gap: 6px;
   font-size: 0.8125rem;
-  color: var(--text-secondary, #a1a1aa);
+  color: var(--color-c9);
   text-decoration: none;
   transition: color 150ms ease;
 
   @media (--hover) {
     &:hover {
-      color: var(--text-primary, #fafafa);
+      color: var(--color-c12);
     }
   }
 }
@@ -34,7 +35,7 @@
 .name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary, #fafafa);
+  color: var(--color-c12);
   margin: 0;
 }
 
@@ -53,13 +54,13 @@
   flex-direction: column;
   gap: 4px;
   padding: 16px;
-  background-color: var(--surface, #141414);
-  border: 1px solid var(--border, #262626);
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c3);
 }
 
 .statLabel {
   font-size: 0.6875rem;
-  color: var(--text-muted, #52525b);
+  color: var(--color-c6);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -67,12 +68,13 @@
 .statValue {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--text-primary, #fafafa);
+  color: var(--color-c12);
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
 .isBtcOrange {
-  color: var(--btc-orange, #f7931a);
+  color: var(--color-c11);
 }
 
 .joinSection {
@@ -88,16 +90,16 @@
   padding: 10px 20px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--accent, #22c55e);
-  background-color: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  color: var(--color-c12);
+  background-color: oklch(0.933 0 0 / 0.1);
+  border: 1px solid oklch(0.933 0 0 / 0.2);
 }
 
 .joinedDot {
   width: 8px;
   height: 8px;
   border-radius: 9999px;
-  background-color: var(--accent, #22c55e);
+  background-color: var(--color-c12);
 }
 
 .participantSection {
@@ -105,8 +107,8 @@
   flex-direction: column;
   gap: 0;
   padding: 20px;
-  background-color: var(--surface, #141414);
-  border: 1px solid var(--border, #262626);
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c3);
 }
 
 .notFound {
@@ -122,12 +124,12 @@
 .notFoundTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary, #fafafa);
+  color: var(--color-c12);
   margin: 0;
 }
 
 .notFoundText {
   font-size: 0.875rem;
-  color: var(--text-muted, #52525b);
+  color: var(--color-c6);
   margin: 0;
 }

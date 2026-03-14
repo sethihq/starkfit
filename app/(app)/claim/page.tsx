@@ -7,6 +7,7 @@ import { Link } from '@/components/ui/link'
 import { ClaimCard } from '@/components/claim/claim-card'
 import { ClaimSuccess } from '@/components/claim/claim-success'
 import { useChallengeStore } from '@/hooks/use-challenge-store'
+// StarkZap SDK: gasless reward claims
 import { claimReward as claimRewardContract } from '@/lib/services/challenge-contract'
 import {
   calculatePrizePool,

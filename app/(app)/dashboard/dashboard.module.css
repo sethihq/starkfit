@@ -1,19 +1,9 @@
 .page {
-  --background: #0a0a0a;
-  --surface: #141414;
-  --surface-hover: #1a1a1a;
-  --border: #262626;
-  --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
-  --accent: #22c55e;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --btc-orange: #f7931a;
-
   position: relative;
   min-height: 100dvh;
-  background: var(--background);
-  color: var(--text-primary);
+  background: var(--color-c1);
+  color: var(--color-c12);
+  font-family: var(--font-sans);
 }
 
 .content {
@@ -22,7 +12,7 @@
   padding: 24px 16px 80px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
 }
 
 @media (min-width: 640px) {
@@ -34,7 +24,7 @@
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
+  gap: 0;
 }
 
 @media (min-width: 640px) {
@@ -57,13 +47,13 @@
 .emptyTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary, #fafafa);
+  color: var(--color-c12);
   font-family: var(--font-mono);
 }
 
 .emptyDescription {
   font-size: 0.875rem;
-  color: var(--text-secondary, #a1a1aa);
+  color: var(--color-c9);
   max-width: 320px;
 }
 

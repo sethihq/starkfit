@@ -4,6 +4,7 @@ import { AlertTriangle } from 'lucide-react'
 import { useState } from 'react'
 import type { Challenge, WalletState } from '@/hooks/use-challenge-store'
 import { formatBTC } from '@/utils/format'
+// StarkZap SDK: gasless BTC staking for fitness challenges
 import { joinChallenge as joinChallengeContract } from '@/lib/services/challenge-contract'
 import { Modal } from '@/components/ui/modal'
 import { Button } from '@/components/ui/button'
@@ -29,6 +30,8 @@ export function JoinModal({
   async function handleConfirm() {
     setLoading(true)
     try {
+      // StarkZap SDK: this triggers wallet.stake() via the challenge store
+      // Transaction is gasless via AVNU Paymaster (feeMode: "sponsored")
       await joinChallengeContract(challenge.id)
       onJoin(challenge.id)
       onClose()
@@ -42,6 +45,12 @@ export function JoinModal({
       <div className={s.body}>
         <p className={s.challengeName}>{challenge.name}</p>
 
+        {/* StarkZap SDK: powered-by badge */}
+        <div className={s.sdkBadge}>
+          <span className={s.sdkBadgeIcon}>&#x26A1;</span>
+          <span className={s.sdkBadgeText}>Powered by StarkZap SDK</span>
+        </div>
+
         <div className={s.stakeRow}>
           <span className={s.stakeLabel}>Stake Required</span>
           <span className={s.stakeAmount}>
@@ -54,6 +63,12 @@ export function JoinModal({
           <span className={s.balanceValue}>
             {formatBTC(wallet.balance.btc)}
           </span>
+        </div>
+
+        {/* StarkZap SDK: gasless transaction indicator */}
+        <div className={s.gasless}>
+          <span className={s.gaslessIcon}>&#x2728;</span>
+          <span className={s.gaslessText}>Gasless Transaction via AVNU Paymaster</span>
         </div>
 
         <div className={s.warning}>

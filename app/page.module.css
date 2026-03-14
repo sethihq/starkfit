@@ -13,6 +13,7 @@
   overflow-x: hidden;
   background: var(--color-c1);
   color: var(--color-c12);
+  font-family: var(--font-sans);
 }
 
 /* Vertical guide lines */
@@ -130,7 +131,7 @@
 .featuresTitle {
   font-size: 24px;
   font-weight: 700;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--color-c12);
@@ -189,12 +190,14 @@
 .featureTitle {
   font-size: 15px;
   font-weight: 500;
+  font-family: var(--font-sans);
   color: var(--color-c12);
   margin-bottom: 6px;
 }
 
 .featureDesc {
   font-size: 14px;
+  font-family: var(--font-sans);
   color: var(--color-c8);
   line-height: 1.6;
 }
@@ -215,7 +218,7 @@
 .ctaTitle {
   font-size: 24px;
   font-weight: 700;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--color-c12);

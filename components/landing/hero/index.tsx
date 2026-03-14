@@ -3,6 +3,7 @@
 import cn from 'clsx'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
+import { Link } from '@/components/ui/link'
 import s from './hero.module.css'
 
 export function Hero() {
@@ -60,21 +61,21 @@ export function Hero() {
 
         {/* Headline */}
         <h1 className={cn(s.headline, s.fadeUp)} data-delay="100">
-          Your money or{' '}
-          <span className={s.headlineAccent}>your miles</span>
+          Move or{' '}
+          <span className={s.headlineAccent}>lose</span>
         </h1>
 
         {/* Subheadline */}
         <p className={cn(s.subheadline, s.fadeUp)} data-delay="200">
-          Stake Bitcoin on your discipline. 7,000 steps a day keeps your money. Miss once and it goes to everyone who didn't.
+          Stake BTC. Walk 7,000 steps. Miss a day, lose your stake. Survivors split the pool.
         </p>
 
         {/* CTAs */}
         <div className={cn(s.ctas, s.fadeUp)} data-delay="300">
-          <button type="button" className={s.ctaPrimary}>
+          <Link href="/challenges" className={s.ctaPrimary}>
             Enter a Challenge
             <ArrowRight className={s.ctaIcon} />
-          </button>
+          </Link>
           <button
             type="button"
             className={s.ctaSecondary}

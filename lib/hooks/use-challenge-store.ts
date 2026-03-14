@@ -10,6 +10,8 @@
 import { create } from 'zustand'
 import { createMockData } from '@/utils/mock-data'
 import { getMockBalance } from '@/lib/services/wallet'
+// StarkZap SDK: gasless BTC staking for fitness challenges
+import { starkzap } from '@/lib/services/starkzap'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -134,15 +136,36 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
 
       if (!wallet.connected) return
 
-      set({
-        challenges: challenges.map((challenge) => {
-          if (challenge.id !== challengeId) return challenge
-          if (challenge.participants.length >= challenge.maxParticipants) return challenge
+      const challenge = challenges.find((c) => c.id === challengeId)
 
-          const alreadyJoined = challenge.participants.some(
+      // StarkZap SDK: stake BTC into challenge pool (gasless via AVNU Paymaster)
+      if (challenge) {
+        starkzap
+          .stakeIntoChallengePool(challengeId, challenge.stakeAmount)
+          .then((result) => {
+            console.log(
+              '[StarkZap SDK] Challenge stake confirmed:',
+              result.txHash,
+              '| Amount:',
+              result.amount,
+              'WBTC | Pool:',
+              result.poolAddress,
+            )
+          })
+          .catch((error: unknown) => {
+            console.error('[StarkZap SDK] Stake failed:', error)
+          })
+      }
+
+      set({
+        challenges: challenges.map((c) => {
+          if (c.id !== challengeId) return c
+          if (c.participants.length >= c.maxParticipants) return c
+
+          const alreadyJoined = c.participants.some(
             (p) => p.address === wallet.address,
           )
-          if (alreadyJoined) return challenge
+          if (alreadyJoined) return c
 
           const newParticipant: Participant = {
             id: `user-${wallet.address}`,
@@ -157,8 +180,8 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
           }
 
           return {
-            ...challenge,
-            participants: [...challenge.participants, newParticipant],
+            ...c,
+            participants: [...c.participants, newParticipant],
           }
         }),
         userParticipation: new Map(userParticipation).set(challengeId, 'active'),
@@ -250,6 +273,22 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
       const { userParticipation } = get()
       const status = userParticipation.get(challengeId)
       if (status !== 'winner') return
+
+      // StarkZap SDK: claim challenge rewards (gasless via AVNU Paymaster)
+      starkzap
+        .claimChallengeReward(challengeId)
+        .then((result) => {
+          console.log(
+            '[StarkZap SDK] Reward claimed:',
+            result.txHash,
+            '| Rewards:',
+            result.rewardsAmount,
+            'STRK',
+          )
+        })
+        .catch((error: unknown) => {
+          console.error('[StarkZap SDK] Claim failed:', error)
+        })
 
       const newParticipation = new Map(userParticipation)
       newParticipation.set(challengeId, 'completed')

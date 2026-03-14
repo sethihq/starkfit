@@ -40,6 +40,13 @@ export function ClaimSuccess({ amount, txHash, className }: ClaimSuccessProps) {
           your wallet
         </p>
 
+        {/* StarkZap SDK: claimed-via badge */}
+        <div className={s.sdkBadge}>
+          <span className={s.sdkBadgeIcon}>&#x26A1;</span>
+          <span className={s.sdkBadgeLabel}>Claimed via StarkZap SDK</span>
+          <span className={s.sdkBadgeSub}>Gasless via AVNU Paymaster</span>
+        </div>
+
         <div className={s.txHash}>{formatAddress(txHash)}</div>
 
         <div className={s.actions}>

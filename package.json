@@ -59,6 +59,7 @@
     "react-dom": "19.2.4",
     "starknet": "^9.4.2",
     "starknetkit": "^3.4.3",
+    "starkzap": "^1.0.0",
     "tempus": "1.0.0-dev.17",
     "three": "0.182.0",
     "tunnel-rat": "^0.1.2",

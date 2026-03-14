@@ -6,6 +6,7 @@
   padding: 40px 20px;
   background-color: var(--color-c2);
   border: 1px solid var(--color-c4);
+  font-family: var(--font-sans);
 }
 
 .ringContainer {
@@ -27,6 +28,7 @@
   font-weight: 700;
   line-height: 1;
   color: var(--color-c12);
+  font-family: var(--font-mono);
 }
 
 .stepsLabel {
@@ -39,6 +41,7 @@
 .target {
   font-size: 0.9375rem;
   color: var(--color-c8);
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
@@ -46,6 +49,7 @@
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-c8);
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
@@ -79,6 +83,52 @@
 
 .syncButton {
   margin-top: 8px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.sourceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  color: var(--color-c8);
+  background-color: var(--color-c3);
+}
+
+.sourceBadge svg {
+  flex-shrink: 0;
+}
+
+.isReal {
+  color: #4ade80;
+  background-color: oklch(0.7 0.15 150 / 0.12);
+}
+
+.disconnectButton {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  font-size: 0.6875rem;
+  color: var(--color-c8);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.disconnectButton:hover {
+  color: var(--color-c10);
 }
 
 @media (prefers-reduced-motion: reduce) {

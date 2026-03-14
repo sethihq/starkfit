@@ -3,6 +3,7 @@
 import cn from 'clsx'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { Link } from '@/components/ui/link'
 import s from '../page.module.css'
 
 export function CtaSection() {
@@ -33,10 +34,10 @@ export function CtaSection() {
     <section ref={sectionRef} className={s.cta}>
       <div className={cn(s.ctaInner, s.fadeUp, isVisible && s.isVisible)}>
         <h2 className={s.ctaTitle}>Discipline pays. Literally.</h2>
-        <button type="button" className={s.ctaButton}>
+        <Link href="/challenges" className={s.ctaButton}>
           Start Walking
           <ArrowRight className={s.ctaButtonIcon} />
-        </button>
+        </Link>
         <p className={s.ctaSubtext}>
           Built on Starknet
           <span className={s.ctaSubtextDot}>&middot;</span>

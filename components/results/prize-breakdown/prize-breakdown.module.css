@@ -2,6 +2,7 @@
   padding: 24px;
   background-color: var(--color-c2);
   border: 1px solid var(--color-c4);
+  font-family: var(--font-sans);
 }
 
 .title {
@@ -42,6 +43,7 @@
 .rowValue {
   font-size: 0.875rem;
   font-weight: 600;
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   color: var(--color-c11);
 }
@@ -92,6 +94,7 @@
 .winnerValue {
   font-size: 1.25rem;
   font-weight: 700;
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   color: var(--color-c12);
 }

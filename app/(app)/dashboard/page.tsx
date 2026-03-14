@@ -90,7 +90,7 @@ function DashboardContent() {
             >
               <path
                 d="M10 2.667C10 2.667 9.333 2 8 2S6 2.667 6 2.667M4 14h8M6 14v-2.667M10 14v-2.667M8 2v2M5.333 4h5.334c.736 0 1.333.597 1.333 1.333v2.667c0 1.473-1.194 2.667-2.667 2.667H6.667A2.667 2.667 0 014 8V5.333C4 4.597 4.597 4 5.333 4z"
-                stroke="var(--btc-orange, #f7931a)"
+                stroke="var(--color-c11)"
                 strokeWidth="1.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -153,7 +153,7 @@ function DashboardContent() {
             >
               <path
                 d="M14 4l-4.667 4.667L6.667 6 2 10.667M14 4h-4M14 4v4"
-                stroke="var(--accent, #22c55e)"
+                stroke="var(--color-c12)"
                 strokeWidth="1.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

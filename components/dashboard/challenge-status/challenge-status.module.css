@@ -5,6 +5,7 @@
   padding: 20px;
   background-color: var(--color-c2);
   border: 1px solid var(--color-c4);
+  font-family: var(--font-sans);
 }
 
 @media (min-width: 640px) {

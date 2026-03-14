@@ -17,6 +17,8 @@ import {
 } from 'starknetkit'
 import type { StarknetWindowObject } from 'starknetkit'
 import { useChallengeStore } from '@/hooks/use-challenge-store'
+// StarkZap SDK: social login via Privy (email, Google — no seed phrases)
+import { starkzap } from '@/lib/services/starkzap'
 
 interface UseWalletReturn {
   address: string | null
@@ -25,11 +27,16 @@ interface UseWalletReturn {
   connect: () => Promise<void>
   disconnect: () => Promise<void>
   wallet: StarknetWindowObject | null
+  // StarkZap SDK: social login via Privy strategy
+  connectWithEmail: (email: string) => Promise<void>
+  connectingEmail: boolean
 }
 
 export function useWallet(): UseWalletReturn {
   const [wallet, setWallet] = useState<StarknetWindowObject | null>(null)
   const [connecting, setConnecting] = useState(false)
+  // StarkZap SDK: track email-based login state
+  const [connectingEmail, setConnectingEmail] = useState(false)
 
   const storeWallet = useChallengeStore((state) => state.wallet)
   const storeConnect = useChallengeStore((state) => state.connectWallet)
@@ -95,6 +102,27 @@ export function useWallet(): UseWalletReturn {
     storeDisconnect()
   }
 
+  /**
+   * StarkZap SDK: connect wallet via email (Privy social login)
+   *
+   * Creates a smart wallet using email — no browser extension needed.
+   * Uses OnboardStrategy.Privy under the hood.
+   */
+  async function connectWithEmail(email: string) {
+    setConnectingEmail(true)
+
+    try {
+      // StarkZap SDK: Privy social login — gasless wallet creation
+      const result = await starkzap.initializeWallet(email)
+      storeConnect(result.address)
+      console.log('[StarkZap SDK] Email wallet connected:', result.address, '| Status:', result.status)
+    } catch (_error: unknown) {
+      // StarkZap SDK: email login failed — user can retry
+    } finally {
+      setConnectingEmail(false)
+    }
+  }
+
   return {
     address: storeWallet.address,
     connected: storeWallet.connected,
@@ -102,5 +130,8 @@ export function useWallet(): UseWalletReturn {
     connect,
     disconnect,
     wallet,
+    // StarkZap SDK: social login
+    connectWithEmail,
+    connectingEmail,
   }
 }
