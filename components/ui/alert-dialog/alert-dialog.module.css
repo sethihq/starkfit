@@ -126,6 +126,6 @@
   }
 
   &.destructive {
-    background-color: #dc2626;
+    background-color: var(--color-c5);
   }
 }
