@@ -1,0 +1,102 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c4);
+}
+
+.title {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-c4) transparent;
+}
+
+.track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.track::-webkit-scrollbar-thumb {
+  background: var(--color-c4);
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  border: 2px solid var(--color-c4);
+  background-color: transparent;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.isCompleted {
+  background-color: var(--color-c12);
+  border-color: var(--color-c12);
+}
+
+.isFailed {
+  background-color: var(--color-c5);
+  border-color: var(--color-c5);
+}
+
+.isCurrent {
+  border-color: var(--color-c8);
+  background-color: oklch(0.549 0 0 / 0.15);
+}
+
+.isFuture {
+  border-color: var(--color-c4);
+  opacity: 0.5;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-c1);
+}
+
+.isFailed .icon {
+  color: var(--color-c12);
+}
+
+.isCurrent .icon {
+  color: var(--color-c8);
+  width: 8px;
+  height: 8px;
+}
+
+.dayLabel {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--color-c8);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

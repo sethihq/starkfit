@@ -1,0 +1,66 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c4);
+}
+
+@media (min-width: 640px) {
+  .root {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-c12);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.dayInfo {
+  font-size: 0.8125rem;
+  color: var(--color-c8);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.progressBarWrapper {
+  flex: 1;
+  min-width: 80px;
+  max-width: 160px;
+  height: 4px;
+  background-color: var(--color-c4);
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: var(--color-c12);
+  transition: width 300ms ease-out;
+}
+
+.countdown {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-c12);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}

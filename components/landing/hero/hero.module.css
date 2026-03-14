@@ -1,0 +1,214 @@
+.hero {
+  border-top: 1px solid var(--color-c4);
+  position: relative;
+  overflow: hidden;
+  contain: paint;
+}
+
+.inner {
+  padding: 176px 32px 112px;
+  text-align: center;
+}
+
+.pillRow {
+  margin-bottom: 40px;
+}
+
+.pillBorderTop,
+.pillBorderBottom {
+  margin-inline: -32px;
+  border-top: 1px dashed var(--color-c4);
+}
+
+.pillWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-left: 1px dashed var(--color-c4);
+  border-right: 1px dashed var(--color-c4);
+  background: var(--color-c2);
+}
+
+.pillDot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-c12);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.pillText {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.headline {
+  font-size: clamp(40px, 8vw, 72px);
+  font-weight: 700;
+  color: var(--color-c12);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.headlineAccent {
+  color: var(--color-c12);
+}
+
+.subheadline {
+  margin-top: 32px;
+  font-size: 14px;
+  color: var(--color-c8);
+  max-width: 400px;
+  margin-inline: auto;
+  line-height: 1.7;
+  font-family: var(--font-mono);
+}
+
+.ctas {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .ctas {
+    flex-direction: row;
+  }
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  transition: all 100ms ease-out;
+  cursor: pointer;
+  border: none;
+}
+
+.ctaPrimary {
+  background: var(--color-c12);
+  color: var(--color-c1);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.2),
+    inset 0 -1px 0 0 rgba(0,0,0,0.1),
+    0 0 20px oklch(0.933 0 0 / 0.15);
+  animation: cta-glow 3s ease-in-out infinite;
+}
+
+.ctaPrimary:hover {
+  background: var(--color-c11);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.25),
+    inset 0 -1px 0 0 rgba(0,0,0,0.1),
+    0 0 30px oklch(0.933 0 0 / 0.15);
+}
+
+.ctaPrimary:active {
+  background: var(--color-c10);
+  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+@keyframes cta-glow {
+  0%, 100% { box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1), 0 0 20px oklch(0.933 0 0 / 0.15); }
+  50% { box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1), 0 0 40px oklch(0.933 0 0 / 0.15); }
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--color-c8);
+  border: 1px solid var(--color-c4);
+}
+
+.ctaSecondary:hover {
+  color: var(--color-c12);
+  border-color: var(--color-c8);
+}
+
+.ctaSecondary:active {
+  background: var(--color-c2);
+}
+
+.ctaIcon {
+  width: 14px;
+  height: 14px;
+  transition: transform 150ms ease;
+}
+
+.ctaPrimary:hover .ctaIcon {
+  transform: translateX(2px);
+}
+
+.floatStat {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.floatStatInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px dashed var(--color-c4);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-c8);
+}
+
+.floatStatDot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-c12);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Scroll reveal */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeUp.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeUp {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .pillDot,
+  .floatStatDot,
+  .ctaPrimary {
+    animation: none;
+  }
+}

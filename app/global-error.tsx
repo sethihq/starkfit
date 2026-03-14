@@ -11,25 +11,25 @@ export default function GlobalError({
   reset: () => void
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error('Global error boundary caught:', error)
   }, [error])
 
   return (
-    <Wrapper theme="light" className="font-mono" webgl>
-      <div className="dr-gap-y-24 my-auto flex flex-col items-center justify-center uppercase">
-        <h1 className="mb-4 font-bold text-4xl">Critical Error</h1>
-        <p className="mb-6 text-gray-600 text-lg">
-          A critical error occurred. Please refresh the page or contact support
-          if the problem persists.
+    <Wrapper theme="dark" className="font-mono">
+      <div className="dr-gap-y-24 my-auto flex flex-col items-center justify-center">
+        <h1 className="mb-4 font-bold text-4xl text-[var(--color-c12)]">
+          Something went wrong
+        </h1>
+        <p className="mb-6 text-[var(--color-c8)] text-lg">
+          A critical error occurred. Please refresh the page or try again.
         </p>
 
         {process.env.NODE_ENV === 'development' && (
           <details className="mb-6 text-left">
-            <summary className="cursor-pointer text-gray-500 text-sm hover:text-gray-700">
+            <summary className="cursor-pointer text-[var(--color-c5)] text-sm hover:text-[var(--color-c8)]">
               Error Details (Development Only)
             </summary>
-            <pre className="mt-2 overflow-auto rounded bg-gray-100 p-4 text-xs">
+            <pre className="mt-2 overflow-auto rounded bg-[var(--color-c2)] p-4 text-xs text-[var(--color-c8)]">
               {error.message}
               {error.digest && `\nDigest: ${error.digest}`}
               {error.stack && `\n\n${error.stack}`}
@@ -41,7 +41,7 @@ export default function GlobalError({
           <button
             onClick={reset}
             type="button"
-            className="rounded bg-black px-6 py-3 text-white transition-colors hover:bg-gray-800"
+            className="rounded bg-[var(--color-c12)] px-6 py-3 font-semibold text-[var(--color-c1)] transition-opacity hover:opacity-90"
           >
             Try Again
           </button>
@@ -50,7 +50,7 @@ export default function GlobalError({
               window.location.href = '/'
             }}
             type="button"
-            className="rounded border border-gray-300 px-6 py-3 transition-colors hover:bg-gray-50"
+            className="rounded border border-[var(--color-c4)] px-6 py-3 text-[var(--color-c12)] transition-colors hover:bg-[var(--color-c2)]"
           >
             Go Home
           </button>

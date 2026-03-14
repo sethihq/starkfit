@@ -1,0 +1,81 @@
+.stats {
+  border-top: 1px solid var(--color-c4);
+  position: relative;
+  overflow: hidden;
+  contain: paint;
+  background: var(--color-c2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-inline: 32px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat {
+  text-align: center;
+  padding: 32px 0;
+  position: relative;
+}
+
+/* Vertical dividers between stats on desktop */
+@media (min-width: 640px) {
+  .stat + .stat {
+    border-left: 1px solid var(--color-c4);
+  }
+}
+
+/* Horizontal dividers on mobile for bottom row */
+@media (max-width: 639px) {
+  .stat:nth-child(n+3) {
+    border-top: 1px solid var(--color-c4);
+  }
+
+  .stat:nth-child(even) {
+    border-left: 1px solid var(--color-c4);
+  }
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-c12);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  margin-top: 4px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Scroll reveal */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeUp.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeUp {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

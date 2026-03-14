@@ -1,0 +1,161 @@
+.row {
+  display: grid;
+  grid-template-columns: 48px 1fr 140px 100px 100px;
+  align-items: center;
+  padding: 14px 16px;
+  background-color: var(--color-c2);
+  border-bottom: 1px solid var(--color-c4);
+  transition: background-color 150ms ease;
+}
+
+@media (hover: hover) {
+  .row:hover {
+    background-color: var(--color-c3);
+  }
+}
+
+.isEliminated {
+  opacity: 0.5;
+}
+
+.isCurrentUser {
+  border-left: 3px solid var(--color-c12);
+  padding-left: 13px;
+}
+
+.isGold {
+  border-left: 3px solid var(--color-c12);
+  padding-left: 13px;
+}
+
+.isSilver {
+  border-left: 3px solid var(--color-c9);
+  padding-left: 13px;
+}
+
+.isBronze {
+  border-left: 3px solid var(--color-c7);
+  padding-left: 13px;
+}
+
+.rank {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+}
+
+.rankActive {
+  color: var(--color-c12);
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.avatar {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.playerName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-c12);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playerAddress {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.steps {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+.stepsOnTrack {
+  color: var(--color-c12);
+}
+
+.stepsBehind {
+  color: var(--color-c5);
+}
+
+.stepsNeutral {
+  color: var(--color-c8);
+}
+
+.streak {
+  font-size: 13px;
+  color: var(--color-c8);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.streakFire {
+  color: var(--color-c11);
+}
+
+.status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 639px) {
+  .row {
+    grid-template-columns: 36px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 4px 0;
+    padding: 12px 12px;
+  }
+
+  .rank {
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+
+  .player {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .steps {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 13px;
+  }
+
+  .streak {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .status {
+    grid-column: 3;
+    grid-row: 2;
+    justify-content: flex-end;
+  }
+}

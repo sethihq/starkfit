@@ -1,0 +1,133 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 16px;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #a1a1aa);
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  @media (--hover) {
+    &:hover {
+      color: var(--text-primary, #fafafa);
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary, #fafafa);
+  margin: 0;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background-color: var(--surface, #141414);
+  border: 1px solid var(--border, #262626);
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  color: var(--text-muted, #52525b);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statValue {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary, #fafafa);
+  font-variant-numeric: tabular-nums;
+}
+
+.isBtcOrange {
+  color: var(--btc-orange, #f7931a);
+}
+
+.joinSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.joinedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent, #22c55e);
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.joinedDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--accent, #22c55e);
+}
+
+.participantSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 20px;
+  background-color: var(--surface, #141414);
+  border: 1px solid var(--border, #262626);
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 16px;
+  text-align: center;
+  gap: 16px;
+}
+
+.notFoundTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #fafafa);
+  margin: 0;
+}
+
+.notFoundText {
+  font-size: 0.875rem;
+  color: var(--text-muted, #52525b);
+  margin: 0;
+}

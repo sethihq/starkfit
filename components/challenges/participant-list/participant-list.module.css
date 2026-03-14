@@ -1,0 +1,97 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-c12);
+  margin: 0 0 12px;
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-c4);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-c12);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.isDotActive {
+  background-color: var(--color-c12);
+}
+
+.isDotEliminated {
+  background-color: var(--color-c5);
+}
+
+.address {
+  font-size: 0.75rem;
+  color: var(--color-c5);
+  font-family: monospace;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.steps {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-c12);
+  font-variant-numeric: tabular-nums;
+}
+
+.streak {
+  font-size: 0.6875rem;
+  color: var(--color-c8);
+}

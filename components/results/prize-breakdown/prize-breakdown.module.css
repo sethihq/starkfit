@@ -1,0 +1,104 @@
+.root {
+  padding: 24px;
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c4);
+}
+
+.title {
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-c4);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowLabel {
+  font-size: 0.875rem;
+  color: var(--color-c8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rowValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-c11);
+}
+
+.isMuted {
+  color: var(--color-c8);
+  font-weight: 400;
+}
+
+.connector {
+  width: 16px;
+  height: 1px;
+  background-color: var(--color-c4);
+  flex-shrink: 0;
+}
+
+.indented {
+  padding-left: 24px;
+  position: relative;
+}
+
+.indented::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background-color: var(--color-c4);
+}
+
+.winnerRow {
+  margin-top: 8px;
+  padding: 16px;
+  background-color: oklch(0.933 0 0 / 0.05);
+  border: 1px solid oklch(0.933 0 0 / 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.winnerLabel {
+  font-size: 0.875rem;
+  color: var(--color-c12);
+  font-weight: 500;
+}
+
+.winnerValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-c12);
+}
+
+.verticalLine {
+  width: 1px;
+  height: 16px;
+  background-color: var(--color-c4);
+  margin-left: 12px;
+}

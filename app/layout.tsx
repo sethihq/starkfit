@@ -13,13 +13,14 @@ import { isSanityConfigured } from '@/lib/integrations/check-integration'
 import { SanityLive } from '@/lib/integrations/sanity/live'
 import { themes } from '@/lib/styles/colors'
 import { fontsVariable } from '@/lib/styles/fonts'
+import { APP_NAME } from '@/utils/constants'
 import AppData from '@/package.json'
 import '@/lib/styles/css/index.css'
 
-const APP_NAME = AppData.name
-const APP_DEFAULT_TITLE = 'Satūs'
-const APP_TITLE_TEMPLATE = '%s - Satūs'
-const APP_DESCRIPTION = AppData.description
+const APP_DEFAULT_TITLE = 'StarkFit'
+const APP_TITLE_TEMPLATE = '%s | StarkFit'
+const APP_DESCRIPTION =
+  'Stake Bitcoin. Walk 7,000 steps. Keep your money or lose it.'
 const APP_BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL ?? 'https://localhost:3000'
 
@@ -33,13 +34,10 @@ export const metadata: Metadata = {
   description: APP_DESCRIPTION,
   alternates: {
     canonical: '/',
-    languages: {
-      'en-US': '/en-US',
-    },
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'default',
+    statusBarStyle: 'black-translucent',
     title: APP_DEFAULT_TITLE,
   },
   formatDetection: { telephone: false },
@@ -70,17 +68,12 @@ export const metadata: Metadata = {
     },
     description: APP_DESCRIPTION,
   },
-  authors: [
-    { name: 'darkroom.engineering', url: 'https://darkroom.engineering' },
-  ],
-  other: {
-    'fb:app_id': process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || '',
-  },
+  authors: [{ name: 'StarkFit', url: 'https://x.com/starkfit' }],
 }
 
 export const viewport: Viewport = {
-  themeColor: themes.red.primary,
-  colorScheme: 'normal',
+  themeColor: themes.dark.primary,
+  colorScheme: 'dark',
 }
 
 export default async function Layout({ children }: PropsWithChildren) {

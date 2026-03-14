@@ -1,29 +1,22 @@
-import Logo from '@/components/ui/darkroom.svg'
+import cn from 'clsx'
 import { Link } from '@/components/ui/link'
+import { TWITTER_URL } from '@/utils/constants'
+import s from './footer.module.css'
 
 export function Footer() {
   return (
-    <footer className="flex dt:flex-row flex-col dt:items-end items-center justify-between p-safe font-mono uppercase">
-      <Link
-        href="https://darkroom.engineering/"
-        className="link"
-        aria-label="Darkroom Engineering"
-      >
-        <Logo className="dr-w-148 text-secondary" aria-hidden="true" />
-      </Link>
-      <div>
+    <footer className={cn(s.footer)}>
+      <div className={cn(s.starknet)}>
+        <span className={cn(s.starknetDot)} />
+        <span>Built on Starknet</span>
+      </div>
+      <div className={cn(s.links)}>
         <Link
-          href="https://github.com/darkroomengineering/satus/generate"
-          className="link"
+          href={TWITTER_URL}
+          className={cn(s.link)}
+          aria-label="StarkFit on X"
         >
-          use this template
-        </Link>
-        {' / '}
-        <Link
-          href="https://github.com/darkroomengineering/satus"
-          className="link"
-        >
-          github
+          X / Twitter
         </Link>
       </div>
     </footer>

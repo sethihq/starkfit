@@ -43,11 +43,18 @@
 	
 	--color-black: #000000;
 	--color-white: #ffffff;
-	--color-red: #e30613;
-	--color-blue: #0070f3;
-	--color-green: #00ff88;
-	--color-purple: #7928ca;
-	--color-pink: #ff0080;
+	--color-c1: oklch(0.162 0 0);
+	--color-c2: oklch(0.195 0 0);
+	--color-c3: oklch(0.254 0 0);
+	--color-c4: oklch(0.302 0 0);
+	--color-c5: oklch(0.348 0 0);
+	--color-c6: oklch(0.396 0 0);
+	--color-c7: oklch(0.459 0 0);
+	--color-c8: oklch(0.549 0 0);
+	--color-c9: oklch(0.649 0 0);
+	--color-c10: oklch(0.72 0 0);
+	--color-c11: oklch(0.863 0 0);
+	--color-c12: oklch(0.933 0 0);
 	
 	@variant dt {
     --device-width: 1440;

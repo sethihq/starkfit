@@ -1,0 +1,45 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: oklch(0.195 0 0 / 0.8);
+  border: 1px dashed var(--color-c4);
+  opacity: 0.7;
+  transition: opacity 150ms ease;
+}
+
+.root:hover {
+  opacity: 1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-c8);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 639px) {
+  .actions {
+    flex-direction: column;
+  }
+}

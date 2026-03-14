@@ -1,0 +1,114 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--safe);
+  height: var(--header-height);
+  background-color: var(--color-c1);
+  border-bottom: 1px solid var(--color-c4);
+  backdrop-filter: blur(12px);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--color-c12);
+  text-decoration: none;
+}
+
+.logoIcon {
+  color: var(--color-c12);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.connectButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 0;
+  border: 1px solid var(--color-c4);
+  background-color: var(--color-c2);
+  color: var(--color-c12);
+  font-family: var(--font-geist-mono, ui-monospace, monospace);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.connectButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) {
+  .connectButton:hover:not(:disabled) {
+    background-color: var(--color-c3);
+    border-color: var(--color-c6);
+  }
+}
+
+.walletInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.walletAddress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-c4);
+  background-color: var(--color-c2);
+  color: var(--color-c12);
+  font-family: var(--font-geist-mono, ui-monospace, monospace);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  border-radius: 0;
+}
+
+.disconnectButton {
+  padding: 8px 12px;
+  border-radius: 0;
+  border: 1px solid var(--color-c4);
+  background-color: transparent;
+  color: var(--color-c11);
+  font-family: var(--font-geist-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+@media (hover: hover) {
+  .disconnectButton:hover {
+    background-color: var(--color-c3);
+    border-color: var(--color-c6);
+  }
+}
+
+.walletDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-c6);
+}
+
+.walletDot.isConnected {
+  background-color: var(--color-c11);
+}

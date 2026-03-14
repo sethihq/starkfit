@@ -23,14 +23,14 @@
 }
 
 .description {
-  color: var(--color-text-secondary, #888);
+  color: var(--color-c8);
   max-width: 400px;
   margin-bottom: 2rem;
 }
 
 .instructions {
-  background: var(--color-surface, rgba(255, 255, 255, 0.05));
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  background: var(--color-c2);
+  border: 1px solid var(--color-c4);
   border-radius: 8px;
   padding: 1.5rem 2rem;
   text-align: left;
@@ -58,7 +58,7 @@
 }
 
 .steps code {
-  background: var(--color-code-bg, rgba(255, 255, 255, 0.1));
+  background: var(--color-c3);
   padding: 0.125rem 0.375rem;
   border-radius: 4px;
   font-size: 0.875em;
@@ -75,17 +75,17 @@
 }
 
 .envList code {
-  color: var(--color-accent, #00d9ff);
+  color: var(--color-c12);
 }
 
 .docs {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  border-top: 1px solid var(--color-c4);
 }
 
 .docs a {
-  color: var(--color-link, #00d9ff);
+  color: var(--color-c12);
   text-decoration: none;
 }
 
@@ -96,11 +96,11 @@
 .hint {
   margin-top: 1.5rem;
   font-size: 0.875rem;
-  color: var(--color-text-secondary, #888);
+  color: var(--color-c8);
 }
 
 .hint code {
-  background: var(--color-code-bg, rgba(255, 255, 255, 0.1));
+  background: var(--color-c3);
   padding: 0.125rem 0.375rem;
   border-radius: 4px;
 }

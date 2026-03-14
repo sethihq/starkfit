@@ -1,0 +1,101 @@
+.section {
+  border-top: 1px solid var(--color-c4);
+  position: relative;
+  overflow: hidden;
+  contain: paint;
+}
+
+.header {
+  padding: 40px 32px 32px;
+}
+
+.label {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-c12);
+}
+
+.grid {
+  border-top: 1px solid var(--color-c4);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step {
+  padding: 32px 24px;
+}
+
+/* Vertical dividers between steps on desktop */
+@media (min-width: 640px) {
+  .step + .step {
+    border-left: 1px solid var(--color-c4);
+  }
+}
+
+/* Horizontal dividers on mobile */
+@media (max-width: 639px) {
+  .step + .step {
+    border-top: 1px solid var(--color-c4);
+  }
+}
+
+.stepNumber {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--color-c12);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.stepTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-c12);
+}
+
+.stepDesc {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--color-c8);
+  line-height: 1.6;
+}
+
+/* Scroll reveal */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeUp.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeUp {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

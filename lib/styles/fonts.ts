@@ -1,6 +1,8 @@
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import localFont from 'next/font/local'
 
-const mono = localFont({
+const serverMono = localFont({
   src: [
     {
       path: '../../public/fonts/ServerMono/ServerMono-Regular.woff2',
@@ -9,7 +11,7 @@ const mono = localFont({
     },
   ],
   display: 'swap',
-  variable: '--next-font-mono',
+  variable: '--next-font-server-mono',
   preload: true,
   adjustFontFallback: 'Arial',
   fallback: [
@@ -22,7 +24,7 @@ const mono = localFont({
   ],
 })
 
-const fonts = [mono]
+const fonts = [GeistSans, GeistMono, serverMono]
 const fontsVariable = fonts.map((font) => font.variable).join(' ')
 
 export { fontsVariable }

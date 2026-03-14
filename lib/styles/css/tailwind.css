@@ -9,16 +9,23 @@
 	--breakpoint-dt: 800px;
 
   --color-*: initial;
-	--color-primary: #ffffff;
-	--color-secondary: #000000;
-	--color-contrast: #e30613;
+	--color-primary: oklch(0.933 0 0);
+	--color-secondary: oklch(0.162 0 0);
+	--color-contrast: oklch(0.549 0 0);
   --color-black: #000000;
 	--color-white: #ffffff;
-	--color-red: #e30613;
-	--color-blue: #0070f3;
-	--color-green: #00ff88;
-	--color-purple: #7928ca;
-	--color-pink: #ff0080;
+	--color-c1: oklch(0.162 0 0);
+	--color-c2: oklch(0.195 0 0);
+	--color-c3: oklch(0.254 0 0);
+	--color-c4: oklch(0.302 0 0);
+	--color-c5: oklch(0.348 0 0);
+	--color-c6: oklch(0.396 0 0);
+	--color-c7: oklch(0.459 0 0);
+	--color-c8: oklch(0.549 0 0);
+	--color-c9: oklch(0.649 0 0);
+	--color-c10: oklch(0.72 0 0);
+	--color-c11: oklch(0.863 0 0);
+	--color-c12: oklch(0.933 0 0);
     
   --spacing-*: initial;
 	--spacing-0: 0;
@@ -53,24 +60,14 @@
 
 /** Custom theme overwrites **/
 [data-theme=light] {
-  --color-primary: #ffffff;
-	--color-secondary: #000000;
-	--color-contrast: #e30613;
+  --color-primary: oklch(0.933 0 0);
+	--color-secondary: oklch(0.162 0 0);
+	--color-contrast: oklch(0.549 0 0);
 }
 [data-theme=dark] {
-  --color-primary: #000000;
-	--color-secondary: #ffffff;
-	--color-contrast: #e30613;
-}
-[data-theme=evil] {
-  --color-primary: #000000;
-	--color-secondary: #e30613;
-	--color-contrast: #ffffff;
-}
-[data-theme=red] {
-  --color-primary: #e30613;
-	--color-secondary: #000000;
-	--color-contrast: #ffffff;
+  --color-primary: oklch(0.162 0 0);
+	--color-secondary: oklch(0.933 0 0);
+	--color-contrast: oklch(0.863 0 0);
 }
   
 
@@ -124,8 +121,6 @@
 /** Custom variants **/
 @custom-variant light (&:where([data-theme=light], [data-theme=light] *));
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-@custom-variant evil (&:where([data-theme=evil], [data-theme=evil] *));
-@custom-variant red (&:where([data-theme=red], [data-theme=red] *));
 
 /** Custom function utilities **/
 @utility dr-text-* {

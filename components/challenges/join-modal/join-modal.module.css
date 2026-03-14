@@ -1,0 +1,82 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.challengeName {
+  font-size: 0.875rem;
+  color: var(--color-c8);
+}
+
+.stakeRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px;
+  background-color: oklch(0.863 0 0 / 0.08);
+  border: 1px solid oklch(0.863 0 0 / 0.2);
+}
+
+.stakeLabel {
+  font-size: 0.75rem;
+  color: var(--color-c5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stakeAmount {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-c11);
+  font-variant-numeric: tabular-nums;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+}
+
+.balanceLabel {
+  color: var(--color-c8);
+}
+
+.balanceValue {
+  color: var(--color-c12);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  background-color: oklch(0.549 0 0 / 0.08);
+  border: 1px solid oklch(0.549 0 0 / 0.2);
+  font-size: 0.8125rem;
+  color: var(--color-c8);
+  line-height: 1.4;
+}
+
+.warningIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.confirmButton {
+  width: 100%;
+}
+
+.cancelButton {
+  width: 100%;
+}

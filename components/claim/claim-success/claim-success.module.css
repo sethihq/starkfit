@@ -1,0 +1,150 @@
+.root {
+  padding: 48px 32px;
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c4);
+  text-align: center;
+}
+
+/* Checkmark circle container */
+.checkmarkContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: oklch(0.933 0 0 / 0.15);
+  margin-bottom: 24px;
+  animation: scaleBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.checkmarkSvg {
+  width: 40px;
+  height: 40px;
+  color: var(--color-c12);
+}
+
+.checkmarkPath {
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: checkmarkDraw 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes checkmarkDraw {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scaleBounce {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-c12);
+  margin-bottom: 8px;
+}
+
+.amountText {
+  font-size: 1rem;
+  color: var(--color-c8);
+  margin-bottom: 24px;
+}
+
+.amountHighlight {
+  color: var(--color-c11);
+  font-weight: 700;
+}
+
+.txHash {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--color-c1);
+  border: 1px solid var(--color-c4);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--color-c8);
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shareButton {
+  width: 100%;
+  height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  background-color: transparent;
+  color: var(--color-c12);
+  border: 1px solid var(--color-c4);
+  cursor: pointer;
+  transition: border-color 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shareButton:hover {
+  border-color: var(--color-c8);
+}
+
+.backButton {
+  width: 100%;
+  height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  background-color: var(--color-c12);
+  color: var(--color-c1);
+  border: none;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton:hover {
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkmarkContainer {
+    animation: none;
+    transform: scale(1);
+  }
+
+  .checkmarkPath {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

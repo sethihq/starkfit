@@ -1,0 +1,88 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 20px;
+  background-color: var(--color-c2);
+  border: 1px solid var(--color-c4);
+}
+
+.ringContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ringContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stepCount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-c12);
+}
+
+.stepsLabel {
+  font-size: 0.75rem;
+  color: var(--color-c8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.target {
+  font-size: 0.9375rem;
+  color: var(--color-c8);
+  font-variant-numeric: tabular-nums;
+}
+
+.percentage {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-c8);
+  font-variant-numeric: tabular-nums;
+}
+
+.isComplete .percentage {
+  color: var(--color-c12);
+}
+
+.completeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background-color: oklch(0.933 0 0 / 0.15);
+  color: var(--color-c12);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  animation: fadeIn 300ms ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.syncButton {
+  margin-top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .completeBadge {
+    animation: none;
+  }
+}

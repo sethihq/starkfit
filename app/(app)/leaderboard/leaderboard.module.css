@@ -1,0 +1,145 @@
+/* Leaderboard page */
+.page {
+  --background: #0a0a0a;
+  --surface: #141414;
+  --border: #262626;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent: #22c55e;
+  --accent-glow: rgba(34, 197, 94, 0.2);
+  --danger: #ef4444;
+  --btc-orange: #f7931a;
+
+  position: relative;
+  background: var(--background);
+  color: var(--text-primary);
+  min-height: 100dvh;
+}
+
+.content {
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.challengeName {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.challengeDay {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+/* Challenge selector */
+.selector {
+  margin-bottom: 24px;
+}
+
+.selectorLabel {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.selectorSelect {
+  appearance: none;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-mono);
+  padding: 10px 36px 10px 14px;
+  width: 100%;
+  max-width: 320px;
+  cursor: pointer;
+  transition: border-color 150ms ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23a1a1aa' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.selectorSelect:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Summary stats */
+.summary {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 16px 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summaryLabel {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.summaryValue {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.summaryValueAccent {
+  composes: summaryValue;
+  color: var(--btc-orange);
+}
+
+@media (max-width: 639px) {
+  .content {
+    padding-inline: 16px;
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .summary {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+}

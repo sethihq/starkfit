@@ -1,29 +1,51 @@
-/**
- * Satus Homepage
- *
- * This page showcases Satus features. When using Satus as a template:
- * 1. Replace this content with your own homepage
- * 2. Delete the app/(marketing)/_sections folder
- *
- * Or keep it as inspiration for your own marketing pages!
- */
-import { Analytics } from '@vercel/analytics/react'
 import { Wrapper } from '@/components/layout/wrapper'
-import { Features } from './(marketing)/_sections/features'
-import { GettingStarted } from './(marketing)/_sections/getting-started'
-import { Hero } from './(marketing)/_sections/hero'
-import { Presets } from './(marketing)/_sections/presets'
-import { ValueProps } from './(marketing)/_sections/value-props'
+import { Hero } from '@/components/landing/hero'
+import { StatsBanner } from '@/components/landing/stats-banner'
+import { HowItWorks } from '@/components/landing/how-it-works'
+import { FeaturesSection } from './_landing/features'
+import { CtaSection } from './_landing/cta'
+import s from './page.module.css'
 
 export default function Home() {
   return (
     <Wrapper theme="dark" lenis={{}}>
-      <Hero />
-      <ValueProps />
-      <Features />
-      <Presets />
-      <GettingStarted />
-      <Analytics />
+      <div className={s.page}>
+        {/* Vertical guide lines */}
+        <div className={s.guideLines} aria-hidden="true">
+          <div className={s.guideInner}>
+            <div className={`${s.guideLine} ${s.guideLineLeft}`} />
+            <div className={`${s.guideLine} ${s.guideLineRight}`} />
+          </div>
+        </div>
+
+        {/* Content column */}
+        <div className={s.content}>
+          <Hero />
+
+          <StatsBanner />
+
+          {/* Hatch divider */}
+          <div className={s.hatch}>
+            <div className={s.hatchInner} />
+          </div>
+
+          <HowItWorks />
+
+          {/* Hatch divider */}
+          <div className={s.hatch}>
+            <div className={s.hatchInner} />
+          </div>
+
+          <FeaturesSection />
+
+          {/* Hatch divider */}
+          <div className={s.hatch}>
+            <div className={s.hatchInner} />
+          </div>
+
+          <CtaSection />
+        </div>
+      </div>
     </Wrapper>
   )
 }
