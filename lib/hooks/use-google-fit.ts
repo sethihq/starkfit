@@ -134,9 +134,7 @@ export function useGoogleFit(): UseGoogleFitReturn {
   function connect() {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
     if (!clientId) {
-      console.error(
-        'NEXT_PUBLIC_GOOGLE_CLIENT_ID is not set. Cannot initiate Google Fit OAuth.'
-      )
+      alert('Google Fit is not configured. Set NEXT_PUBLIC_GOOGLE_CLIENT_ID.')
       return
     }
 
