@@ -9,11 +9,11 @@ import { SanityArticle } from './_components/article'
 
 export async function generateStaticParams() {
   // Use client directly for build-time data fetching instead of sanityFetch
-  if (!client) return []
+  if (!client) return [{ slug: '_placeholder' }]
 
   const data = await client.fetch(allArticlesQuery)
 
-  if (!(data && Array.isArray(data))) return []
+  if (!(data && Array.isArray(data))) return [{ slug: '_placeholder' }]
 
   return data.map((article) => ({ slug: article.slug?.current ?? '' }))
 }
