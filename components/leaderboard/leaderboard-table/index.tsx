@@ -1,9 +1,9 @@
 'use client'
 
 import cn from 'clsx'
-import type { Challenge } from '@/hooks/use-challenge-store'
-import { Link } from '@/components/ui/link'
 import { LeaderboardRow } from '@/components/leaderboard/leaderboard-row'
+import { Link } from '@/components/ui/link'
+import type { Challenge } from '@/hooks/use-challenge-store'
 import s from './leaderboard-table.module.css'
 
 interface LeaderboardTableProps {
@@ -48,26 +48,28 @@ export function LeaderboardTable({
   const { active, eliminated } = sortParticipants(challenge)
 
   return (
-    <div className={cn(s.table, className)} role="table" aria-label="Leaderboard">
-      <div className={s.header} role="row">
-        <span className={s.headerCell} role="columnheader">
-          Rank
-        </span>
-        <span className={s.headerCell} role="columnheader">
-          Player
-        </span>
-        <span className={s.headerCellRight} role="columnheader">
-          Today&apos;s Steps
-        </span>
-        <span className={cn(s.headerCellRight, s.headerCellStreak)} role="columnheader">
-          Streak
-        </span>
-        <span className={cn(s.headerCellRight, s.headerCellStatus)} role="columnheader">
-          Status
-        </span>
-      </div>
+    <table className={cn(s.table, className)} aria-label="Leaderboard">
+      <thead>
+        <tr className={s.header}>
+          <th className={s.headerCell} scope="col">
+            Rank
+          </th>
+          <th className={s.headerCell} scope="col">
+            Player
+          </th>
+          <th className={cn(s.headerCellRight)} scope="col">
+            Today&apos;s Steps
+          </th>
+          <th className={cn(s.headerCellRight, s.headerCellStreak)} scope="col">
+            Streak
+          </th>
+          <th className={cn(s.headerCellRight, s.headerCellStatus)} scope="col">
+            Status
+          </th>
+        </tr>
+      </thead>
 
-      <div className={s.body} role="rowgroup">
+      <tbody className={s.body}>
         {active.map((participant, index) => (
           <LeaderboardRow
             key={participant.id}
@@ -87,7 +89,7 @@ export function LeaderboardTable({
             isCurrentUser={participant.id === currentUserParticipantId}
           />
         ))}
-      </div>
-    </div>
+      </tbody>
+    </table>
   )
 }

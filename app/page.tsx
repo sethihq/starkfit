@@ -1,9 +1,9 @@
-import { Wrapper } from '@/components/layout/wrapper'
 import { Hero } from '@/components/landing/hero'
-import { StatsBanner } from '@/components/landing/stats-banner'
 import { HowItWorks } from '@/components/landing/how-it-works'
-import { FeaturesSection } from './_landing/features'
+import { StatsBanner } from '@/components/landing/stats-banner'
+import { Wrapper } from '@/components/layout/wrapper'
 import { CtaSection } from './_landing/cta'
+import { FeaturesSection } from './_landing/features'
 import s from './page.module.css'
 
 export default function Home() {

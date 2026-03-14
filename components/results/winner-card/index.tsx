@@ -1,6 +1,6 @@
 import cn from 'clsx'
-import type { Participant } from '@/hooks/use-challenge-store'
 import { Badge } from '@/components/ui/badge'
+import type { Participant } from '@/hooks/use-challenge-store'
 import { formatBTC } from '@/utils/format'
 import s from './winner-card.module.css'
 

@@ -7,11 +7,19 @@
   border: 1px solid var(--color-c4);
   border-radius: 0;
   font-family: var(--font-sans);
-  transition: border-color 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+  min-height: 180px;
+
+  &:active {
+    background-color: var(--color-c3);
+  }
 
   @media (--hover) {
     &:hover {
-      border-color: var(--color-c5);
+      border-color: var(--color-c6);
+      background-color: oklch(0.195 0 0 / 0.8);
     }
   }
 }
@@ -45,7 +53,7 @@
 
 .statLabel {
   font-size: 0.6875rem;
-  color: var(--color-c5);
+  color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -64,4 +72,24 @@
 
 .footer {
   margin-top: auto;
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 16px;
+    gap: 12px;
+    min-height: 160px;
+  }
+
+  .name {
+    font-size: 0.9375rem;
+  }
+
+  .stats {
+    gap: 8px;
+  }
+
+  .statValue {
+    font-size: 0.8125rem;
+  }
 }

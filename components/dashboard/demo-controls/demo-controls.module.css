@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 16px;
+  padding: 16px 20px;
   background-color: oklch(0.195 0 0 / 0.8);
-  border: 1px dashed var(--color-c4);
+  border: 1px dashed var(--color-c5);
   font-family: var(--font-sans);
-  opacity: 0.7;
+  opacity: 0.85;
   transition: opacity 150ms ease;
 }
 
@@ -22,8 +22,8 @@
 
 .label {
   font-size: 0.6875rem;
-  font-weight: 500;
-  color: var(--color-c8);
+  font-weight: 600;
+  color: var(--color-c9);
   text-transform: uppercase;
   letter-spacing: 0.15em;
 }
@@ -31,12 +31,13 @@
 .icon {
   width: 14px;
   height: 14px;
-  color: var(--color-c8);
+  color: var(--color-c9);
 }
 
 .actions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 639px) {

@@ -7,7 +7,7 @@
  * Access token is persisted in localStorage for hackathon demo purposes.
  */
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useChallengeStore } from '@/hooks/use-challenge-store'
 import {
   buildOAuthUrl,
@@ -43,10 +43,10 @@ function removeStoredToken(): void {
 
 export function useGoogleFit(): UseGoogleFitReturn {
   const [accessToken, setAccessToken] = useState<string | null>(null)
-  const [steps, setSteps] = useState<number | null>(null)
+  const [localSteps, setLocalSteps] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const updateSteps = useChallengeStore((state) => state.updateSteps)
+  const setStoreSteps = useChallengeStore((state) => state.setSteps)
   const activeChallengeId = useChallengeStore(
     (state) => state.activeChallengeId
   )
@@ -87,6 +87,50 @@ export function useGoogleFit(): UseGoogleFitReturn {
 
   const isConnected = accessToken !== null
 
+  // Auto-sync steps when Google Fit is connected (on mount or after OAuth)
+  const hasSyncedRef = useRef(false)
+  useEffect(() => {
+    if (!accessToken) {
+      hasSyncedRef.current = false
+      return
+    }
+
+    if (hasSyncedRef.current) return
+    hasSyncedRef.current = true
+
+    // Fetch real steps immediately when connected
+    async function autoSync() {
+      setIsLoading(true)
+      try {
+        const { start, end } = getTodayRange()
+        const totalSteps = await getStepCount(accessToken!, start, end)
+        setLocalSteps(totalSteps)
+
+        if (activeChallengeId) {
+          const challenge = challenges.find((c) => c.id === activeChallengeId)
+          if (challenge) {
+            const participant = challenge.participants[0]
+            if (participant) {
+              setStoreSteps(activeChallengeId, participant.id, totalSteps)
+            }
+          }
+        }
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : 'Unknown error'
+        console.error('Auto-sync Google Fit failed:', message)
+
+        if (message.includes('401')) {
+          removeStoredToken()
+          setAccessToken(null)
+        }
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    void autoSync()
+  }, [accessToken, activeChallengeId, challenges, setStoreSteps])
+
   function connect() {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
     if (!clientId) {
@@ -105,7 +149,7 @@ export function useGoogleFit(): UseGoogleFitReturn {
   function disconnect() {
     removeStoredToken()
     setAccessToken(null)
-    setSteps(null)
+    setLocalSteps(null)
   }
 
   async function syncSteps() {
@@ -116,19 +160,15 @@ export function useGoogleFit(): UseGoogleFitReturn {
     try {
       const { start, end } = getTodayRange()
       const totalSteps = await getStepCount(accessToken, start, end)
-      setSteps(totalSteps)
+      setLocalSteps(totalSteps)
 
-      // Update the active challenge with real step data
+      // Replace the step count with real Google Fit data (not additive)
       if (activeChallengeId) {
         const challenge = challenges.find((c) => c.id === activeChallengeId)
         if (challenge) {
           const participant = challenge.participants[0]
           if (participant) {
-            // Calculate the delta from what's already recorded
-            const delta = Math.max(0, totalSteps - participant.todaySteps)
-            if (delta > 0) {
-              updateSteps(activeChallengeId, participant.id, delta)
-            }
+            setStoreSteps(activeChallengeId, participant.id, totalSteps)
           }
         }
       }
@@ -146,5 +186,12 @@ export function useGoogleFit(): UseGoogleFitReturn {
     }
   }
 
-  return { steps, isLoading, isConnected, connect, disconnect, syncSteps }
+  return {
+    steps: localSteps,
+    isLoading,
+    isConnected,
+    connect,
+    disconnect,
+    syncSteps,
+  }
 }

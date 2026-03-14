@@ -13,10 +13,7 @@ export function Card({
   ...props
 }: CardProps) {
   return (
-    <div
-      className={cn(s.card, hover && s.isHoverable, className)}
-      {...props}
-    >
+    <div className={cn(s.card, hover && s.isHoverable, className)} {...props}>
       {children}
     </div>
   )

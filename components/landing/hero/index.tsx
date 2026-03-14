@@ -30,7 +30,7 @@ export function Hero() {
           }
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
 
     for (const target of targets) {
@@ -41,7 +41,9 @@ export function Hero() {
   }, [])
 
   function handleScrollToHowItWorks() {
-    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
+    document
+      .getElementById('how-it-works')
+      ?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -61,13 +63,13 @@ export function Hero() {
 
         {/* Headline */}
         <h1 className={cn(s.headline, s.fadeUp)} data-delay="100">
-          Move or{' '}
-          <span className={s.headlineAccent}>lose</span>
+          Move or <span className={s.headlineAccent}>lose</span>
         </h1>
 
         {/* Subheadline */}
         <p className={cn(s.subheadline, s.fadeUp)} data-delay="200">
-          Stake BTC. Walk 7,000 steps. Miss a day, lose your stake. Survivors split the pool.
+          Stake BTC. Walk 7,000 steps. Miss a day, lose your stake. Survivors
+          split the pool.
         </p>
 
         {/* CTAs */}

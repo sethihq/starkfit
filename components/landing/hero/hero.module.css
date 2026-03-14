@@ -6,8 +6,14 @@
 }
 
 .inner {
-  padding: 176px 32px 112px;
+  padding: 160px 32px 96px;
   text-align: center;
+}
+
+@media (max-width: 639px) {
+  .inner {
+    padding: 120px 20px 72px;
+  }
 }
 
 .pillRow {
@@ -43,8 +49,13 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .pillText {
@@ -70,13 +81,20 @@
 }
 
 .subheadline {
-  margin-top: 32px;
-  font-size: 14px;
+  margin-top: 28px;
+  font-size: 15px;
   color: var(--color-c8);
-  max-width: 400px;
+  max-width: 420px;
   margin-inline: auto;
   line-height: 1.7;
   font-family: var(--font-sans);
+}
+
+@media (max-width: 639px) {
+  .subheadline {
+    font-size: 14px;
+    max-width: 320px;
+  }
 }
 
 .ctas {
@@ -105,17 +123,26 @@
   font-size: 14px;
   font-weight: 500;
   font-family: var(--font-mono);
-  transition: all 100ms ease-out;
+  transition: all 180ms ease-out;
   cursor: pointer;
   border: none;
+}
+
+@media (max-width: 639px) {
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    height: 48px;
+    font-size: 15px;
+  }
 }
 
 .ctaPrimary {
   background: var(--color-c12);
   color: var(--color-c1);
   box-shadow:
-    inset 0 1px 0 0 rgba(255,255,255,0.2),
-    inset 0 -1px 0 0 rgba(0,0,0,0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
     0 0 20px oklch(0.933 0 0 / 0.15);
   animation: cta-glow 3s ease-in-out infinite;
 }
@@ -123,19 +150,30 @@
 .ctaPrimary:hover {
   background: var(--color-c11);
   box-shadow:
-    inset 0 1px 0 0 rgba(255,255,255,0.25),
-    inset 0 -1px 0 0 rgba(0,0,0,0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
     0 0 30px oklch(0.933 0 0 / 0.15);
 }
 
 .ctaPrimary:active {
   background: var(--color-c10);
-  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 @keyframes cta-glow {
-  0%, 100% { box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1), 0 0 20px oklch(0.933 0 0 / 0.15); }
-  50% { box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1), 0 0 40px oklch(0.933 0 0 / 0.15); }
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
+      0 0 20px oklch(0.933 0 0 / 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
+      0 0 40px oklch(0.933 0 0 / 0.15);
+  }
 }
 
 .ctaSecondary {
@@ -147,6 +185,7 @@
 .ctaSecondary:hover {
   color: var(--color-c12);
   border-color: var(--color-c8);
+  background: var(--color-c2);
 }
 
 .ctaSecondary:active {
@@ -190,8 +229,10 @@
 /* Scroll reveal */
 .fadeUp {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fadeUp.isVisible {

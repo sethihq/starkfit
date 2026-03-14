@@ -3,14 +3,14 @@
 import cn from 'clsx'
 import { ArrowLeft } from 'lucide-react'
 import { use, useState } from 'react'
-import { useChallengeStore } from '@/hooks/use-challenge-store'
-import { formatBTC, formatDuration, formatSteps } from '@/utils/format'
-import { calculatePrizePool } from '@/utils/challenge'
+import { JoinModal } from '@/components/challenges/join-modal'
+import { ParticipantList } from '@/components/challenges/participant-list'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/components/ui/link'
-import { ParticipantList } from '@/components/challenges/participant-list'
-import { JoinModal } from '@/components/challenges/join-modal'
+import { useChallengeStore } from '@/hooks/use-challenge-store'
+import { calculatePrizePool } from '@/utils/challenge'
+import { formatBTC, formatDuration, formatSteps } from '@/utils/format'
 import s from './challenge-detail.module.css'
 
 interface ChallengeDetailPageProps {
@@ -24,7 +24,7 @@ export default function ChallengeDetailPage({
   const challenges = useChallengeStore((state) => state.challenges)
   const wallet = useChallengeStore((state) => state.wallet)
   const userParticipation = useChallengeStore(
-    (state) => state.userParticipation,
+    (state) => state.userParticipation
   )
   const joinChallenge = useChallengeStore((state) => state.joinChallenge)
   const [joinModalOpen, setJoinModalOpen] = useState(false)

@@ -7,15 +7,33 @@
 import type { Challenge, Participant } from '@/hooks/use-challenge-store'
 
 const AVATARS = [
-  '\u{1F525}', '\u{1F4AA}', '\u{1F3C3}', '\u{26A1}', '\u{1F60E}',
-  '\u{1F3AF}', '\u{1F680}', '\u{1F31F}', '\u{1F9D7}', '\u{1F3CB}',
-  '\u{1F947}', '\u{1F48E}',
+  '\u{1F525}',
+  '\u{1F4AA}',
+  '\u{1F3C3}',
+  '\u{26A1}',
+  '\u{1F60E}',
+  '\u{1F3AF}',
+  '\u{1F680}',
+  '\u{1F31F}',
+  '\u{1F9D7}',
+  '\u{1F3CB}',
+  '\u{1F947}',
+  '\u{1F48E}',
 ]
 
 const NAMES = [
-  'Alex', 'Jordan', 'Casey', 'Morgan', 'Riley',
-  'Taylor', 'Avery', 'Quinn', 'Blake', 'Drew',
-  'Sage', 'Reese',
+  'Alex',
+  'Jordan',
+  'Casey',
+  'Morgan',
+  'Riley',
+  'Taylor',
+  'Avery',
+  'Quinn',
+  'Blake',
+  'Drew',
+  'Sage',
+  'Reese',
 ]
 
 function generateAddress(seed: number): string {
@@ -30,7 +48,7 @@ function generateAddress(seed: number): string {
 function generateStepHistory(
   days: number,
   target: number,
-  eliminatedOnDay: number | null,
+  eliminatedOnDay: number | null
 ): number[] {
   const history: number[] = []
 
@@ -61,7 +79,7 @@ function createParticipant(
   index: number,
   target: number,
   completedDays: number,
-  eliminatedOnDay: number | null,
+  eliminatedOnDay: number | null
 ): Participant {
   const history = generateStepHistory(completedDays, target, eliminatedOnDay)
   const isElim = eliminatedOnDay !== null
@@ -116,7 +134,7 @@ function createChallenge(config: {
   }
 
   const eliminatedMap = new Map(
-    config.eliminatedParticipants.map((e) => [e.index, e.day]),
+    config.eliminatedParticipants.map((e) => [e.index, e.day])
   )
 
   const completedDays =
@@ -126,7 +144,7 @@ function createChallenge(config: {
   for (let i = 0; i < config.participantCount; i++) {
     const elimDay = eliminatedMap.get(i) ?? null
     participants.push(
-      createParticipant(i, config.dailyStepTarget, completedDays, elimDay),
+      createParticipant(i, config.dailyStepTarget, completedDays, elimDay)
     )
   }
 

@@ -14,7 +14,7 @@
 .pill {
   display: inline-flex;
   align-items: center;
-  padding: 6px 16px;
+  padding: 8px 18px;
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1;
@@ -29,9 +29,14 @@
     border-color 150ms ease,
     color 150ms ease;
 
+  &:active {
+    background-color: var(--color-c3);
+  }
+
   @media (--hover) {
     &:hover {
       background-color: var(--color-c2);
+      border-color: var(--color-c5);
       color: var(--color-c12);
     }
   }
@@ -47,5 +52,19 @@
       background-color: oklch(0.933 0 0 / 0.2);
       color: var(--color-c12);
     }
+  }
+}
+
+@media (max-width: 639px) {
+  .filters {
+    -webkit-overflow-scrolling: touch;
+    padding-left: 0;
+    padding-right: 16px;
+  }
+
+  .pill {
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 0.875rem;
   }
 }

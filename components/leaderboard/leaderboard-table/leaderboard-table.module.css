@@ -1,25 +1,32 @@
 .table {
+  display: block;
   border: 1px solid var(--color-c4);
   overflow: hidden;
   font-family: var(--font-sans);
+  border-collapse: collapse;
+}
+
+.table thead {
+  display: block;
 }
 
 .header {
   display: grid;
   grid-template-columns: 48px 1fr 140px 100px 100px;
   align-items: center;
-  padding: 10px 16px;
-  background-color: var(--color-c1);
+  padding: 12px 16px;
+  background-color: var(--color-c2);
   border-bottom: 1px solid var(--color-c4);
 }
 
 .headerCell {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: var(--font-mono);
   color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-align: left;
 }
 
 .headerCellRight {
@@ -28,18 +35,24 @@
 }
 
 .body {
-  /* Scrollable if many participants */
+  display: block;
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-c4) transparent;
 }
 
 .empty {
-  padding: 48px 24px;
+  padding: 64px 24px;
   text-align: center;
 }
 
 .emptyTitle {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-c12);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
   margin-bottom: 8px;
 }
 
@@ -67,6 +80,13 @@
 
 /* Responsive: hide some header columns on mobile */
 @media (max-width: 639px) {
+  .table {
+    border-left: none;
+    border-right: none;
+    margin-inline: -16px;
+    width: calc(100% + 32px);
+  }
+
   .header {
     grid-template-columns: 36px 1fr auto;
     padding: 10px 12px;
@@ -75,5 +95,9 @@
   .headerCellStreak,
   .headerCellStatus {
     display: none;
+  }
+
+  .body {
+    max-height: 480px;
   }
 }

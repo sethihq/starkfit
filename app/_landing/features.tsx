@@ -45,7 +45,7 @@ export function FeaturesSection() {
           }
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
 
     observer.observe(section)
@@ -56,7 +56,9 @@ export function FeaturesSection() {
     <section ref={sectionRef} className={s.features}>
       <div className={s.featuresHeader}>
         <p className={s.featuresLabel}>Why StarkFit</p>
-        <h2 className={s.featuresTitle}>Accountability you can't negotiate with</h2>
+        <h2 className={s.featuresTitle}>
+          Accountability you can't negotiate with
+        </h2>
       </div>
 
       <div className={s.featuresGrid}>
@@ -64,12 +66,9 @@ export function FeaturesSection() {
           <div
             key={feature.title}
             className={cn(s.feature, s.fadeUp, isVisible && s.isVisible)}
-            style={{ transitionDelay: `${i * 100}ms` }}
+            style={{ transitionDelay: `${i * 120}ms` }}
           >
-            <feature.Icon
-              className={s.featureIcon}
-              strokeWidth={1.5}
-            />
+            <feature.Icon className={s.featureIcon} strokeWidth={1.5} />
             <h3 className={s.featureTitle}>{feature.title}</h3>
             <p className={s.featureDesc}>{feature.desc}</p>
           </div>

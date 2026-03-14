@@ -1,41 +1,61 @@
 .card {
-  padding: 40px 32px;
+  padding: 48px 32px;
   background-color: var(--color-c2);
   border: 1px solid var(--color-c4);
   text-align: center;
   font-family: var(--font-sans);
 }
 
+/* "You Won!" -- celebratory but restrained */
 .celebrationHeader {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--color-c12);
   margin-bottom: 8px;
+  animation: headerReveal 0.5s var(--ease-out-quart) both;
+}
+
+@keyframes headerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .challengeName {
   font-size: 0.875rem;
   color: var(--color-c8);
   margin-bottom: 32px;
+  animation: fadeInUp 0.5s var(--ease-out-quart) 0.1s both;
 }
 
+/* Prize amount -- prominent display */
 .prizeAmount {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  color: var(--color-c11);
-  margin-bottom: 32px;
+  color: var(--color-c12);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 36px;
+  animation: fadeInUp 0.5s var(--ease-out-quart) 0.2s both;
 }
 
+/* Stats grid */
 .statsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
+  animation: fadeInUp 0.5s var(--ease-out-quart) 0.3s both;
 }
 
 .statItem {
@@ -58,24 +78,62 @@
   margin-top: 4px;
 }
 
+/* Claim button -- the biggest CTA in the app */
 .claimButton {
   width: 100%;
-  height: 56px;
-  font-size: 1.0625rem;
-  font-weight: 600;
+  height: 64px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
   background-color: var(--color-c12);
   color: var(--color-c1);
   border: none;
   cursor: pointer;
-  transition: opacity 150ms ease;
+  transition:
+    opacity 150ms ease,
+    box-shadow 200ms ease,
+    transform 150ms ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 24px oklch(0.933 0 0 / 0.12);
+  animation: fadeInUp 0.5s var(--ease-out-quart) 0.4s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.claimButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(1 0 0 / 0.06) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
 }
 
 .claimButton:hover:not(:disabled) {
-  opacity: 0.9;
+  box-shadow: 0 6px 32px oklch(0.933 0 0 / 0.18);
+  transform: translateY(-1px);
+}
+
+.claimButton:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .claimButton:disabled {
@@ -83,14 +141,23 @@
   cursor: not-allowed;
 }
 
+.claimButton:disabled::after {
+  animation: none;
+}
+
+/* Loading state */
 .isLoading {
   cursor: wait;
 }
 
+.isLoading::after {
+  animation: none;
+}
+
 .spinner {
   display: inline-flex;
-  width: 1.125em;
-  height: 1.125em;
+  width: 1.25em;
+  height: 1.25em;
   animation: spin 0.8s linear infinite;
 }
 
@@ -105,5 +172,63 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 32px 16px 28px;
+  }
+
+  .celebrationHeader {
+    font-size: 1.5rem;
+  }
+
+  .prizeAmount {
+    font-size: 2.25rem;
+    margin-bottom: 24px;
+  }
+
+  .statsGrid {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .statItem {
+    padding: 12px;
+  }
+
+  .statValue {
+    font-size: 1rem;
+  }
+
+  .claimButton {
+    height: 56px;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebrationHeader,
+  .challengeName,
+  .prizeAmount,
+  .statsGrid,
+  .claimButton {
+    animation: none;
+  }
+
+  .claimButton::after {
+    animation: none;
   }
 }

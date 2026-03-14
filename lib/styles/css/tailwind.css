@@ -32,6 +32,7 @@
 	--spacing-safe: var(--safe);
 	--spacing-gap: var(--gap);
   --spacing-header-height: var(--header-height);
+	--spacing-nav-height: var(--nav-height);
 
   --font-*: initial;
   --font-sans: var(--font-geist-sans);

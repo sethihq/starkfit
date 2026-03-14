@@ -9,7 +9,13 @@
 .content {
   max-width: 720px;
   margin-inline: auto;
-  padding: 40px 24px 80px;
+  padding: 32px 16px 80px;
+}
+
+@media (min-width: 640px) {
+  .content {
+    padding: 40px 24px 80px;
+  }
 }
 
 .header {
@@ -23,12 +29,13 @@
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--color-c12);
+  margin: 0;
 }
 
 .challengeName {
   font-size: 0.875rem;
-  color: var(--color-c9);
-  margin-top: 4px;
+  color: var(--color-c8);
+  margin-top: 6px;
 }
 
 .section {
@@ -38,10 +45,10 @@
 .sectionTitle {
   font-size: 0.8125rem;
   font-family: var(--font-mono);
-  color: var(--color-c9);
+  color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
 .winnersList {
@@ -53,21 +60,30 @@
 .statsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 24px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 639px) {
   .statsRow {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .section {
+    margin-top: 24px;
   }
 }
 
 .claimCta {
   margin-top: 40px;
   padding: 24px;
-  background-color: oklch(0.933 0 0 / 0.05);
-  border: 1px solid oklch(0.933 0 0 / 0.15);
+  background-color: oklch(0.933 0 0 / 0.06);
+  border: 1px solid oklch(0.933 0 0 / 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,18 +91,29 @@
 }
 
 .claimCtaText {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--color-c12);
 }
 
 .claimCtaAmount {
   color: var(--color-c11);
   font-weight: 700;
+  font-family: var(--font-mono);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 639px) {
   .claimCta {
     flex-direction: column;
     text-align: center;
+    padding: 20px;
+  }
+
+  .claimCta a,
+  .claimCta button {
+    width: 100%;
+  }
+
+  .claimCtaAmount {
+    font-size: 1.125rem;
   }
 }

@@ -63,7 +63,7 @@ export function Modal({
       // Trap focus
       if (e.key === 'Tab' && panelRef.current) {
         const focusable = panelRef.current.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         )
 
         if (focusable.length === 0) {
@@ -103,6 +103,7 @@ export function Modal({
   if (!open) return null
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: backdrop dismissal is supplementary to Escape key
     <div
       className={s.backdrop}
       onClick={handleBackdropClick}
@@ -131,6 +132,7 @@ export function Modal({
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M12 4L4 12M4 4l8 8"

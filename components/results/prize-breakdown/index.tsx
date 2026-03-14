@@ -1,13 +1,10 @@
 'use client'
 
 import cn from 'clsx'
-import type { Challenge } from '@/hooks/use-challenge-store'
 import { AnimatedNumber } from '@/components/ui/animated-number'
+import type { Challenge } from '@/hooks/use-challenge-store'
+import { calculatePrizePool, getActiveParticipants } from '@/utils/challenge'
 import { formatBTC } from '@/utils/format'
-import {
-  calculatePrizePool,
-  getActiveParticipants,
-} from '@/utils/challenge'
 import s from './prize-breakdown.module.css'
 
 const PLATFORM_FEE_RATE = 0.05
@@ -75,9 +72,7 @@ export function PrizeBreakdown({ challenge, className }: PrizeBreakdownProps) {
 
         {/* Per Winner */}
         <div className={s.winnerRow}>
-          <span className={s.winnerLabel}>
-            Per Winner ({winnerCount})
-          </span>
+          <span className={s.winnerLabel}>Per Winner ({winnerCount})</span>
           <AnimatedNumber
             value={perWinner}
             formatFn={(n) => formatBTC(n)}

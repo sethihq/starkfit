@@ -20,15 +20,11 @@ export function calculateWinnerPrize(challenge: Challenge): number {
 }
 
 export function getActiveParticipants(challenge: Challenge): Participant[] {
-  return challenge.participants.filter(
-    (p) => p.status === 'active',
-  )
+  return challenge.participants.filter((p) => p.status === 'active')
 }
 
 export function getEliminatedParticipants(challenge: Challenge): Participant[] {
-  return challenge.participants.filter(
-    (p) => p.status === 'eliminated',
-  )
+  return challenge.participants.filter((p) => p.status === 'eliminated')
 }
 
 export function isEliminated(participant: Participant): boolean {

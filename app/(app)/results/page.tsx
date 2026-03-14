@@ -1,11 +1,10 @@
 'use client'
 
-import { Wrapper } from '@/components/layout/wrapper'
-import { StatCard } from '@/components/ui/stat-card'
-import { Button } from '@/components/ui/button'
-import { Link } from '@/components/ui/link'
 import { PrizeBreakdown } from '@/components/results/prize-breakdown'
 import { WinnerCard } from '@/components/results/winner-card'
+import { Button } from '@/components/ui/button'
+import { Link } from '@/components/ui/link'
+import { StatCard } from '@/components/ui/stat-card'
 import { useChallengeStore } from '@/hooks/use-challenge-store'
 import {
   calculatePrizePool,
@@ -19,19 +18,19 @@ const PLATFORM_FEE_RATE = 0.05
 
 export default function ResultsPage() {
   const challenges = useChallengeStore((state) => state.challenges)
-  const userParticipation = useChallengeStore((state) => state.userParticipation)
+  const userParticipation = useChallengeStore(
+    (state) => state.userParticipation
+  )
 
   const completedChallenge = challenges.find((c) => c.status === 'completed')
 
   if (!completedChallenge) {
     return (
-      <Wrapper theme="dark">
-        <div className={s.page}>
-          <div className={s.content}>
-            <p className={s.title}>No completed challenges yet.</p>
-          </div>
+      <div className={s.page}>
+        <div className={s.content}>
+          <p className={s.title}>No completed challenges yet.</p>
         </div>
-      </Wrapper>
+      </div>
     )
   }
 
@@ -45,82 +44,79 @@ export default function ResultsPage() {
   const isWinner = userStatus === 'winner'
 
   return (
-    <Wrapper theme="dark">
-      <div className={s.page}>
-        <div className={s.content}>
-          {/* Header */}
-          <div className={s.header}>
-            <h1 className={s.title}>Challenge Results</h1>
-            <p className={s.challengeName}>{completedChallenge.name}</p>
+    <div className={s.page}>
+      <div className={s.content}>
+        {/* Header */}
+        <div className={s.header}>
+          <h1 className={s.title}>Challenge Results</h1>
+          <p className={s.challengeName}>{completedChallenge.name}</p>
+        </div>
+
+        {/* Stats */}
+        <div className={s.statsRow}>
+          <StatCard
+            value={String(completedChallenge.participants.length)}
+            label="Participants"
+          />
+          <StatCard value={String(winners.length)} label="Winners" />
+          <StatCard
+            value={formatDuration(completedChallenge.duration)}
+            label="Duration"
+          />
+        </div>
+
+        {/* Prize Breakdown */}
+        <PrizeBreakdown challenge={completedChallenge} />
+
+        {/* Winners */}
+        <div className={s.section}>
+          <p className={s.sectionTitle}>Winners</p>
+          <div className={s.winnersList}>
+            {winners.map((winner) => (
+              <WinnerCard
+                key={winner.id}
+                participant={winner}
+                duration={completedChallenge.duration}
+                prizeAmount={perWinner}
+                stakeAmount={completedChallenge.stakeAmount}
+              />
+            ))}
           </div>
+        </div>
 
-          {/* Stats */}
-          <div className={s.statsRow}>
-            <StatCard
-              value={String(completedChallenge.participants.length)}
-              label="Participants"
-            />
-            <StatCard
-              value={String(winners.length)}
-              label="Winners"
-            />
-            <StatCard
-              value={formatDuration(completedChallenge.duration)}
-              label="Duration"
-            />
-          </div>
-
-          {/* Prize Breakdown */}
-          <PrizeBreakdown challenge={completedChallenge} />
-
-          {/* Winners */}
+        {/* Eliminated */}
+        {eliminated.length > 0 && (
           <div className={s.section}>
-            <p className={s.sectionTitle}>Winners</p>
+            <p className={s.sectionTitle}>Eliminated</p>
             <div className={s.winnersList}>
-              {winners.map((winner) => (
+              {eliminated.map((participant) => (
                 <WinnerCard
-                  key={winner.id}
-                  participant={winner}
+                  key={participant.id}
+                  participant={participant}
                   duration={completedChallenge.duration}
-                  prizeAmount={perWinner}
+                  prizeAmount={0}
                   stakeAmount={completedChallenge.stakeAmount}
                 />
               ))}
             </div>
           </div>
+        )}
 
-          {/* Eliminated */}
-          {eliminated.length > 0 && (
-            <div className={s.section}>
-              <p className={s.sectionTitle}>Eliminated</p>
-              <div className={s.winnersList}>
-                {eliminated.map((participant) => (
-                  <WinnerCard
-                    key={participant.id}
-                    participant={participant}
-                    duration={completedChallenge.duration}
-                    prizeAmount={0}
-                    stakeAmount={completedChallenge.stakeAmount}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Claim CTA */}
-          {isWinner && (
-            <div className={s.claimCta}>
-              <span className={s.claimCtaText}>
-                You won{' '}
-                <span className={s.claimCtaAmount}>{formatBTC(perWinner)}</span>
-              </span>
-              <Link href="/claim">
-                <Button size="lg">Claim Reward</Button>
-              </Link>
-            </div>
-          )}
-        </div>
+        {/* Claim CTA */}
+        {isWinner && (
+          <div className={s.claimCta}>
+            <span className={s.claimCtaText}>
+              You won{' '}
+              <span className={s.claimCtaAmount}>{formatBTC(perWinner)}</span>
+            </span>
+            <Link href="/claim">
+              <Button variant="primary" size="lg">
+                Claim Reward
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
-    </Wrapper>
+    </div>
   )
 }

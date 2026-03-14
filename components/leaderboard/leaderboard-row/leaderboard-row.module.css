@@ -16,27 +16,31 @@
 }
 
 .isEliminated {
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 .isCurrentUser {
   border-left: 3px solid var(--color-c12);
   padding-left: 13px;
+  background-color: oklch(0.933 0 0 / 0.04);
 }
 
 .isGold {
   border-left: 3px solid var(--color-c12);
   padding-left: 13px;
+  background-color: oklch(0.933 0 0 / 0.06);
 }
 
 .isSilver {
   border-left: 3px solid var(--color-c9);
   padding-left: 13px;
+  background-color: oklch(0.649 0 0 / 0.06);
 }
 
 .isBronze {
   border-left: 3px solid var(--color-c7);
   padding-left: 13px;
+  background-color: oklch(0.459 0 0 / 0.06);
 }
 
 .rank {

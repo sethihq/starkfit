@@ -56,10 +56,7 @@ export function AnimatedNumber({
   }, [value, duration])
 
   return (
-    <span
-      className={className}
-      style={{ fontVariantNumeric: 'tabular-nums' }}
-    >
+    <span className={className} style={{ fontVariantNumeric: 'tabular-nums' }}>
       {formatFn(display)}
     </span>
   )

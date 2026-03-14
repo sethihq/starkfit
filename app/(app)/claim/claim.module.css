@@ -9,12 +9,23 @@
 .content {
   max-width: 520px;
   margin-inline: auto;
-  padding: 60px 24px 80px;
+  padding: 48px 16px 80px;
+}
+
+@media (min-width: 640px) {
+  .content {
+    padding: 60px 24px 80px;
+  }
 }
 
 .notEligible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 60px 24px;
+  padding: 80px 24px;
+  gap: 12px;
 }
 
 .notEligibleTitle {
@@ -23,11 +34,21 @@
   font-family: var(--font-mono);
   text-transform: uppercase;
   color: var(--color-c12);
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 .notEligibleText {
   font-size: 0.875rem;
-  color: var(--color-c9);
-  margin-bottom: 24px;
+  color: var(--color-c8);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 639px) {
+  .content {
+    padding: 32px 16px 80px;
+  }
+
+  .notEligible {
+    padding: 48px 16px;
+  }
 }

@@ -30,7 +30,7 @@ export function Button({
         s[size],
         loading && s.isLoading,
         disabled && s.isDisabled,
-        className,
+        className
       )}
       disabled={disabled || loading}
       {...props}
@@ -41,6 +41,7 @@ export function Button({
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
             <circle
               cx="12"

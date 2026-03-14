@@ -1,8 +1,8 @@
 'use client'
 
 import cn from 'clsx'
-import type { Participant } from '@/hooks/use-challenge-store'
 import { Badge } from '@/components/ui/badge'
+import type { Participant } from '@/hooks/use-challenge-store'
 import { formatAddress, formatSteps } from '@/utils/format'
 import s from './leaderboard-row.module.css'
 
@@ -37,20 +37,19 @@ export function LeaderboardRow({
   const hasLongStreak = participant.currentStreak >= 10
 
   return (
-    <div
+    <tr
       className={cn(
         s.row,
         isEliminated && s.isEliminated,
         isCurrentUser && !rankAccent && s.isCurrentUser,
-        rankAccent,
+        rankAccent
       )}
-      role="row"
     >
-      <span className={cn(s.rank, !isEliminated && s.rankActive)} role="cell">
+      <td className={cn(s.rank, !isEliminated && s.rankActive)}>
         {rank !== null ? `#${rank}` : '\u2014'}
-      </span>
+      </td>
 
-      <div className={s.player} role="cell">
+      <td className={s.player}>
         <span className={s.avatar} aria-hidden="true">
           {participant.avatar}
         </span>
@@ -62,32 +61,28 @@ export function LeaderboardRow({
             {formatAddress(participant.address)}
           </span>
         </div>
-      </div>
+      </td>
 
-      <span
+      <td
         className={cn(
           s.steps,
-          getStepsClass(participant.todaySteps, dailyStepTarget, isEliminated),
+          getStepsClass(participant.todaySteps, dailyStepTarget, isEliminated)
         )}
-        role="cell"
       >
         {isEliminated ? '\u2014' : formatSteps(participant.todaySteps)}
-      </span>
+      </td>
 
-      <span
-        className={cn(s.streak, hasLongStreak && s.streakFire)}
-        role="cell"
-      >
+      <td className={cn(s.streak, hasLongStreak && s.streakFire)}>
         {isEliminated
           ? `Day ${participant.eliminatedOnDay}`
           : `Day ${participant.currentStreak}${hasLongStreak ? ' \uD83D\uDD25' : ''}`}
-      </span>
+      </td>
 
-      <div className={s.status} role="cell">
+      <td className={s.status}>
         <Badge variant={participant.status}>
           {participant.status === 'active' ? 'Active' : 'Eliminated'}
         </Badge>
-      </div>
-    </div>
+      </td>
+    </tr>
   )
 }

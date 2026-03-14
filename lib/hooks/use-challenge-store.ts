@@ -8,10 +8,10 @@
  */
 
 import { create } from 'zustand'
-import { createMockData } from '@/utils/mock-data'
-import { getMockBalance } from '@/lib/services/wallet'
 // StarkZap SDK: gasless BTC staking for fitness challenges
 import { starkzap } from '@/lib/services/starkzap'
+import { getMockBalance } from '@/lib/services/wallet'
+import { createMockData } from '@/utils/mock-data'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -55,13 +55,21 @@ interface ChallengeStore {
   challenges: Challenge[]
   wallet: WalletState
   activeChallengeId: string | null
-  userParticipation: Map<string, 'active' | 'eliminated' | 'completed' | 'winner'>
+  userParticipation: Map<
+    string,
+    'active' | 'eliminated' | 'completed' | 'winner'
+  >
 
   // Actions
   connectWallet: (address: string) => void
   disconnectWallet: () => void
   joinChallenge: (challengeId: string) => void
-  updateSteps: (challengeId: string, participantId: string, steps: number) => void
+  updateSteps: (
+    challengeId: string,
+    participantId: string,
+    steps: number
+  ) => void
+  setSteps: (challengeId: string, participantId: string, steps: number) => void
   simulateDay: () => void
   claimReward: (challengeId: string) => void
   syncSteps: () => void
@@ -80,20 +88,23 @@ const initialWallet: WalletState = {
 }
 
 function buildInitialParticipation(
-  challenges: Challenge[],
+  challenges: Challenge[]
 ): Map<string, 'active' | 'eliminated' | 'completed' | 'winner'> {
-  const map = new Map<string, 'active' | 'eliminated' | 'completed' | 'winner'>()
+  const map = new Map<
+    string,
+    'active' | 'eliminated' | 'completed' | 'winner'
+  >()
 
   for (const challenge of challenges) {
     const userParticipant = challenge.participants.find(
-      (p) => p.id === USER_PARTICIPANT_ID,
+      (p) => p.id === USER_PARTICIPANT_ID
     )
     if (!userParticipant) continue
 
     if (challenge.status === 'completed') {
       map.set(
         challenge.id,
-        userParticipant.status === 'active' ? 'winner' : 'eliminated',
+        userParticipant.status === 'active' ? 'winner' : 'eliminated'
       )
     } else {
       map.set(challenge.id, userParticipant.status)
@@ -149,7 +160,7 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
               '| Amount:',
               result.amount,
               'WBTC | Pool:',
-              result.poolAddress,
+              result.poolAddress
             )
           })
           .catch((error: unknown) => {
@@ -163,7 +174,7 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
           if (c.participants.length >= c.maxParticipants) return c
 
           const alreadyJoined = c.participants.some(
-            (p) => p.address === wallet.address,
+            (p) => p.address === wallet.address
           )
           if (alreadyJoined) return c
 
@@ -184,7 +195,10 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
             participants: [...c.participants, newParticipant],
           }
         }),
-        userParticipation: new Map(userParticipation).set(challengeId, 'active'),
+        userParticipation: new Map(userParticipation).set(
+          challengeId,
+          'active'
+        ),
       })
     },
 
@@ -200,6 +214,24 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
             participants: challenge.participants.map((p) => {
               if (p.id !== participantId) return p
               return { ...p, todaySteps: p.todaySteps + steps }
+            }),
+          }
+        }),
+      })
+    },
+
+    setSteps(challengeId: string, participantId: string, steps: number) {
+      const { challenges } = get()
+
+      set({
+        challenges: challenges.map((challenge) => {
+          if (challenge.id !== challengeId) return challenge
+
+          return {
+            ...challenge,
+            participants: challenge.participants.map((p) => {
+              if (p.id !== participantId) return p
+              return { ...p, todaySteps: steps }
             }),
           }
         }),
@@ -249,7 +281,7 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
 
           if (isCompleted) {
             const userP = updatedParticipants.find(
-              (p) => p.id === USER_PARTICIPANT_ID,
+              (p) => p.id === USER_PARTICIPANT_ID
             )
             if (userP && userP.status === 'active') {
               newParticipation.set(challenge.id, 'winner')
@@ -283,7 +315,7 @@ export const useChallengeStore = create<ChallengeStore>((set, get) => {
             result.txHash,
             '| Rewards:',
             result.rewardsAmount,
-            'STRK',
+            'STRK'
           )
         })
         .catch((error: unknown) => {

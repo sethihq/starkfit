@@ -13,10 +13,28 @@ interface StatItem {
 }
 
 const STATS: StatItem[] = [
-  { value: '0.24 BTC', numericValue: 0.24, prefix: '', suffix: ' BTC', label: 'Total Staked' },
-  { value: '3', numericValue: 3, prefix: '', suffix: '', label: 'Active Challenges' },
+  {
+    value: '0.24 BTC',
+    numericValue: 0.24,
+    prefix: '',
+    suffix: ' BTC',
+    label: 'Total Staked',
+  },
+  {
+    value: '3',
+    numericValue: 3,
+    prefix: '',
+    suffix: '',
+    label: 'Active Challenges',
+  },
   { value: '47', numericValue: 47, prefix: '', suffix: '', label: 'Winners' },
-  { value: '2.4M', numericValue: 2.4, prefix: '', suffix: 'M', label: 'Steps Tracked' },
+  {
+    value: '2.4M',
+    numericValue: 2.4,
+    prefix: '',
+    suffix: 'M',
+    label: 'Steps Tracked',
+  },
 ]
 
 function animateValue(
@@ -24,7 +42,7 @@ function animateValue(
   end: number,
   duration: number,
   onUpdate: (value: number) => void,
-  onComplete: () => void,
+  onComplete: () => void
 ) {
   const startTime = performance.now()
 
@@ -48,10 +66,10 @@ function animateValue(
 
 export function StatsBanner() {
   const sectionRef = useRef<HTMLElement>(null)
+  const hasAnimatedRef = useRef(false)
   const [displayValues, setDisplayValues] = useState<string[]>(
-    STATS.map(() => '0'),
+    STATS.map((stat) => `${stat.prefix}0${stat.suffix}`)
   )
-  const [hasAnimated, setHasAnimated] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -61,25 +79,27 @@ export function StatsBanner() {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting && !hasAnimated) {
+          if (entry.isIntersecting && !hasAnimatedRef.current) {
+            hasAnimatedRef.current = true
             setIsVisible(true)
-            setHasAnimated(true)
 
             for (const [i, stat] of STATS.entries()) {
-              const delay = i * 100
+              const delay = i * 120
               setTimeout(() => {
                 animateValue(
                   0,
                   stat.numericValue,
-                  1200,
+                  1400,
                   (val) => {
                     setDisplayValues((prev) => {
                       const next = [...prev]
                       if (Number.isInteger(stat.numericValue)) {
-                        next[i] = `${stat.prefix}${Math.round(val)}${stat.suffix}`
+                        next[i] =
+                          `${stat.prefix}${Math.round(val)}${stat.suffix}`
                       } else {
                         const decimals = stat.suffix === ' BTC' ? 2 : 1
-                        next[i] = `${stat.prefix}${val.toFixed(decimals)}${stat.suffix}`
+                        next[i] =
+                          `${stat.prefix}${val.toFixed(decimals)}${stat.suffix}`
                       }
                       return next
                     })
@@ -90,7 +110,7 @@ export function StatsBanner() {
                       next[i] = stat.value
                       return next
                     })
-                  },
+                  }
                 )
               }, delay)
             }
@@ -99,12 +119,12 @@ export function StatsBanner() {
           }
         }
       },
-      { threshold: 0.3 },
+      { threshold: 0.2 }
     )
 
     observer.observe(section)
     return () => observer.disconnect()
-  }, [hasAnimated])
+  }, [])
 
   return (
     <section ref={sectionRef} className={s.stats}>
@@ -113,7 +133,7 @@ export function StatsBanner() {
           <div
             key={stat.label}
             className={cn(s.stat, s.fadeUp, isVisible && s.isVisible)}
-            style={{ transitionDelay: `${i * 80}ms` }}
+            style={{ transitionDelay: `${i * 100}ms` }}
           >
             <p className={s.value}>{displayValues[i]}</p>
             <p className={s.label}>{stat.label}</p>

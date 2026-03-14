@@ -13,7 +13,7 @@ import { useChallengeStore } from '@/hooks/use-challenge-store'
 export function useStepSimulator(
   challengeId: string,
   participantId: string,
-  enabled: boolean,
+  enabled: boolean
 ): void {
   const updateSteps = useChallengeStore((state) => state.updateSteps)
 

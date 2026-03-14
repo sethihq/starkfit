@@ -5,7 +5,9 @@
   padding: 24px var(--safe);
   border-top: 1px solid var(--color-c4);
   background-color: var(--color-c1);
-  font-family: var(--font-geist-mono), var(--next-font-server-mono), ui-monospace, monospace;
+  font-family:
+    var(--font-geist-mono), var(--next-font-server-mono), ui-monospace,
+    monospace;
   font-size: 12px;
   color: var(--color-c5);
 }
@@ -38,5 +40,26 @@
 @media (hover: hover) {
   .link:hover {
     color: var(--color-c8);
+  }
+}
+
+@media (max-width: 639px) {
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    padding: 20px 16px;
+    font-size: 11px;
+  }
+
+  .links {
+    gap: 12px;
+  }
+
+  .link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }

@@ -50,13 +50,14 @@
 
 /* Neutral pulse on guide lines */
 .guideLine::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: -70px;
   width: 1px;
   height: 70px;
-  background: linear-gradient(180deg,
+  background: linear-gradient(
+    180deg,
     transparent 0%,
     oklch(0.933 0 0 / 0.1) 12%,
     oklch(0.933 0 0 / 0.4) 35%,
@@ -75,10 +76,21 @@
 }
 
 @keyframes guide-pulse {
-  0% { top: -70px; opacity: 0; }
-  1% { opacity: 1; }
-  98% { top: 100%; opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+  0% {
+    top: -70px;
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  98% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
 }
 
 /* Content column */
@@ -88,6 +100,16 @@
   padding-inline: 24px;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 639px) {
+  .content {
+    padding-inline: 16px;
+  }
+
+  .guideLines {
+    display: none;
+  }
 }
 
 /* Hatch divider */
@@ -116,7 +138,13 @@
 }
 
 .featuresHeader {
-  padding: 40px 32px 32px;
+  padding: 48px 32px 32px;
+}
+
+@media (max-width: 639px) {
+  .featuresHeader {
+    padding: 40px 20px 28px;
+  }
 }
 
 .featuresLabel {
@@ -151,6 +179,17 @@
 
 .feature {
   padding: 32px 24px;
+  transition: background 200ms ease;
+}
+
+.feature:hover {
+  background: var(--color-c2);
+}
+
+@media (max-width: 639px) {
+  .feature {
+    padding: 28px 20px;
+  }
 }
 
 /* Borders between feature cards */
@@ -159,7 +198,7 @@
     border-left: 1px solid var(--color-c4);
   }
 
-  .feature:nth-child(n+3) {
+  .feature:nth-child(n + 3) {
     border-top: 1px solid var(--color-c4);
   }
 }
@@ -181,10 +220,18 @@
 }
 
 @keyframes icon-draw {
-  0% { stroke-dashoffset: 100; }
-  20% { stroke-dashoffset: 0; }
-  80% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 100; }
+  0% {
+    stroke-dashoffset: 100;
+  }
+  20% {
+    stroke-dashoffset: 0;
+  }
+  80% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
 }
 
 .featureTitle {
@@ -211,12 +258,18 @@
 }
 
 .ctaInner {
-  padding: 64px 32px;
+  padding: 80px 32px;
   text-align: center;
 }
 
+@media (max-width: 639px) {
+  .ctaInner {
+    padding: 56px 20px;
+  }
+}
+
 .ctaTitle {
-  font-size: 24px;
+  font-size: clamp(22px, 4vw, 28px);
   font-weight: 700;
   font-family: var(--font-sans);
   text-transform: uppercase;
@@ -239,26 +292,52 @@
   color: var(--color-c1);
   border: none;
   cursor: pointer;
-  transition: all 100ms ease-out;
+  transition: all 180ms ease-out;
   box-shadow:
-    inset 0 1px 0 0 rgba(255,255,255,0.2),
-    inset 0 -1px 0 0 rgba(0,0,0,0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
     0 0 20px oklch(0.933 0 0 / 0.15);
   animation: cta-bottom-glow 3s ease-in-out infinite;
 }
 
 @keyframes cta-bottom-glow {
-  0%, 100% { box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1), 0 0 20px oklch(0.933 0 0 / 0.15); }
-  50% { box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(0,0,0,0.1), 0 0 40px oklch(0.933 0 0 / 0.15); }
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
+      0 0 20px oklch(0.933 0 0 / 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
+      0 0 40px oklch(0.933 0 0 / 0.15);
+  }
 }
 
 .ctaButton:hover {
   background: var(--color-c11);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1),
+    0 0 30px oklch(0.933 0 0 / 0.2);
 }
 
 .ctaButton:active {
   background: var(--color-c10);
-  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.2);
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 639px) {
+  .ctaButton {
+    width: 100%;
+    height: 48px;
+    font-size: 15px;
+    padding: 0 24px;
+  }
 }
 
 .ctaButtonIcon {
@@ -272,23 +351,25 @@
 }
 
 .ctaSubtext {
-  margin-top: 16px;
+  margin-top: 20px;
   font-size: 12px;
   font-family: var(--font-mono);
-  color: var(--color-c8);
+  color: var(--color-c9);
   letter-spacing: 0.05em;
 }
 
 .ctaSubtextDot {
   margin-inline: 8px;
-  opacity: 0.5;
+  color: var(--color-c6);
 }
 
 /* Scroll reveal for features and CTA */
 .fadeUp {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fadeUp.isVisible {

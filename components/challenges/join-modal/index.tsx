@@ -2,12 +2,12 @@
 
 import { AlertTriangle } from 'lucide-react'
 import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Modal } from '@/components/ui/modal'
 import type { Challenge, WalletState } from '@/hooks/use-challenge-store'
-import { formatBTC } from '@/utils/format'
 // StarkZap SDK: gasless BTC staking for fitness challenges
 import { joinChallenge as joinChallengeContract } from '@/lib/services/challenge-contract'
-import { Modal } from '@/components/ui/modal'
-import { Button } from '@/components/ui/button'
+import { formatBTC } from '@/utils/format'
 import s from './join-modal.module.css'
 
 interface JoinModalProps {
@@ -68,7 +68,9 @@ export function JoinModal({
         {/* StarkZap SDK: gasless transaction indicator */}
         <div className={s.gasless}>
           <span className={s.gaslessIcon}>&#x2728;</span>
-          <span className={s.gaslessText}>Gasless Transaction via AVNU Paymaster</span>
+          <span className={s.gaslessText}>
+            Gasless Transaction via AVNU Paymaster
+          </span>
         </div>
 
         <div className={s.warning}>

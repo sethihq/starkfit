@@ -32,7 +32,7 @@ export function ParticipantList({
                   s.statusDot,
                   participant.status === 'active'
                     ? s.isDotActive
-                    : s.isDotEliminated,
+                    : s.isDotEliminated
                 )}
               />
             </div>

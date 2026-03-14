@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 24px 16px;
+  padding: 32px 16px 80px;
   max-width: 960px;
   margin: 0 auto;
   width: 100%;
   font-family: var(--font-sans);
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding: 40px 24px 80px;
+  }
 }
 
 .title {
@@ -14,15 +20,19 @@
   font-weight: 700;
   color: var(--color-c12);
   margin: 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 12px;
 
   @media (min-width: 800px) {
     grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 }
 
@@ -31,8 +41,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 48px 16px;
+  padding: 64px 24px;
   text-align: center;
-  color: var(--color-c6);
+  color: var(--color-c8);
   font-size: 0.875rem;
+  border: 1px dashed var(--color-c4);
+  background-color: var(--color-c2);
 }

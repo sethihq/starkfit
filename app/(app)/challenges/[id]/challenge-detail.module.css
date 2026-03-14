@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 24px 16px;
+  padding: 32px 16px 80px;
   max-width: 960px;
   margin: 0 auto;
   width: 100%;
   font-family: var(--font-sans);
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding: 40px 24px 80px;
+  }
 }
 
 .backLink {
@@ -14,9 +20,13 @@
   align-items: center;
   gap: 6px;
   font-size: 0.8125rem;
-  color: var(--color-c9);
+  color: var(--color-c8);
   text-decoration: none;
   transition: color 150ms ease;
+
+  &:active {
+    color: var(--color-c12);
+  }
 
   @media (--hover) {
     &:hover {
@@ -37,30 +47,34 @@
   font-weight: 700;
   color: var(--color-c12);
   margin: 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .statsRow {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 8px;
 
   @media (min-width: 800px) {
     grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
   }
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   padding: 16px;
   background-color: var(--color-c2);
-  border: 1px solid var(--color-c3);
+  border: 1px solid var(--color-c4);
 }
 
 .statLabel {
   font-size: 0.6875rem;
-  color: var(--color-c6);
+  color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -86,8 +100,8 @@
 .joinedBadge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
+  gap: 8px;
+  padding: 12px 24px;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-c12);
@@ -100,6 +114,17 @@
   height: 8px;
   border-radius: 9999px;
   background-color: var(--color-c12);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .participantSection {
@@ -108,7 +133,11 @@
   gap: 0;
   padding: 20px;
   background-color: var(--color-c2);
-  border: 1px solid var(--color-c3);
+  border: 1px solid var(--color-c4);
+  max-height: 480px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-c4) transparent;
 }
 
 .notFound {
@@ -116,7 +145,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 64px 16px;
+  padding: 80px 24px;
   text-align: center;
   gap: 16px;
 }
@@ -125,11 +154,56 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-c12);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
   margin: 0;
 }
 
 .notFoundText {
   font-size: 0.875rem;
-  color: var(--color-c6);
+  color: var(--color-c8);
   margin: 0;
+}
+
+/* Mobile: full-width join button, scrollable participants */
+@media (max-width: 639px) {
+  .name {
+    font-size: 1.25rem;
+  }
+
+  .statsRow {
+    gap: 6px;
+  }
+
+  .stat {
+    padding: 12px;
+  }
+
+  .statValue {
+    font-size: 1rem;
+  }
+
+  .joinSection {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .joinSection > * {
+    width: 100%;
+  }
+
+  .joinedBadge {
+    justify-content: center;
+  }
+
+  .participantSection {
+    padding: 16px;
+    max-height: 360px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .joinedDot {
+    animation: none;
+  }
 }

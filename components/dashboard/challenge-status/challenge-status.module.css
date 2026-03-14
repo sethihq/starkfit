@@ -44,9 +44,9 @@
 
 .progressBarWrapper {
   flex: 1;
-  min-width: 80px;
-  max-width: 160px;
-  height: 4px;
+  min-width: 100px;
+  max-width: 180px;
+  height: 6px;
   background-color: var(--color-c4);
   overflow: hidden;
 }
@@ -64,4 +64,23 @@
   color: var(--color-c12);
   font-family: var(--font-mono);
   white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .root {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .progressBarWrapper {
+    max-width: none;
+  }
 }

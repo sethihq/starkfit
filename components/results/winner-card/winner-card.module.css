@@ -62,7 +62,24 @@
 }
 
 .eliminatedDay {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--color-c5);
   margin-top: 2px;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .name {
+    font-size: 0.875rem;
+    flex-wrap: wrap;
+  }
+
+  .prize {
+    font-size: 0.9375rem;
+  }
 }

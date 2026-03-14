@@ -43,6 +43,7 @@ export function ProgressRing({
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
+        aria-hidden="true"
       >
         <defs>
           <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">

@@ -73,7 +73,7 @@
 
 .address {
   font-size: 0.75rem;
-  color: var(--color-c5);
+  color: var(--color-c8);
   font-family: var(--font-mono);
 }
 
@@ -96,4 +96,29 @@
 .streak {
   font-size: 0.6875rem;
   color: var(--color-c8);
+}
+
+@media (max-width: 639px) {
+  .participant {
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .name {
+    font-size: 0.8125rem;
+  }
+
+  .address {
+    font-size: 0.6875rem;
+  }
+
+  .steps {
+    font-size: 0.75rem;
+  }
 }

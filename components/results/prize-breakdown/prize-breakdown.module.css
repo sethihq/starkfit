@@ -5,13 +5,29 @@
   font-family: var(--font-sans);
 }
 
+@media (max-width: 639px) {
+  .root {
+    padding: 20px 16px;
+  }
+
+  .winnerRow {
+    padding: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .winnerValue {
+    font-size: 1.125rem;
+  }
+}
+
 .title {
   font-size: 0.8125rem;
   font-family: var(--font-mono);
   color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
 .flow {
@@ -66,7 +82,7 @@
 }
 
 .indented::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 8px;
   top: 50%;

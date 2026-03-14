@@ -39,7 +39,7 @@ export function HowItWorks() {
           }
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.15 }
     )
 
     observer.observe(section)

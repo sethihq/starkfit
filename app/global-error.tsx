@@ -29,7 +29,7 @@ export default function GlobalError({
             <summary className="cursor-pointer text-[var(--color-c5)] text-sm hover:text-[var(--color-c8)]">
               Error Details (Development Only)
             </summary>
-            <pre className="mt-2 overflow-auto rounded bg-[var(--color-c2)] p-4 text-xs text-[var(--color-c8)]">
+            <pre className="mt-2 overflow-auto rounded bg-[var(--color-c2)] p-4 text-[var(--color-c8)] text-xs">
               {error.message}
               {error.digest && `\nDigest: ${error.digest}`}
               {error.stack && `\n\n${error.stack}`}

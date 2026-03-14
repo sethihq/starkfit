@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  padding: 40px 20px;
+  padding: 48px 24px 40px;
   background-color: var(--color-c2);
   border: 1px solid var(--color-c4);
   font-family: var(--font-sans);
@@ -129,6 +129,32 @@
 
 .disconnectButton:hover {
   color: var(--color-c10);
+}
+
+/* Mobile: scale down the progress ring area */
+@media (max-width: 639px) {
+  .root {
+    padding: 32px 16px 28px;
+    gap: 16px;
+  }
+
+  .ringContainer {
+    transform: scale(0.75);
+    transform-origin: center;
+    margin: -24px 0;
+  }
+
+  .stepCount {
+    font-size: 2rem;
+  }
+
+  .target {
+    font-size: 0.8125rem;
+  }
+
+  .syncButton {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

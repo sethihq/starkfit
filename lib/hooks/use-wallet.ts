@@ -10,12 +10,12 @@
  * - Argent Mobile (WalletConnect QR)
  */
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import type { StarknetWindowObject } from 'starknetkit'
 import {
   connect as starknetkitConnect,
   disconnect as starknetkitDisconnect,
 } from 'starknetkit'
-import type { StarknetWindowObject } from 'starknetkit'
 import { useChallengeStore } from '@/hooks/use-challenge-store'
 // StarkZap SDK: social login via Privy (email, Google — no seed phrases)
 import { starkzap } from '@/lib/services/starkzap'
@@ -50,11 +50,7 @@ export function useWallet(): UseWalletReturn {
           modalMode: 'neverAsk',
         })
 
-        if (
-          result &&
-          result.wallet &&
-          result.connectorData?.account
-        ) {
+        if (result?.wallet && result.connectorData?.account) {
           setWallet(result.wallet)
           storeConnect(result.connectorData.account)
         }
@@ -64,7 +60,7 @@ export function useWallet(): UseWalletReturn {
     }
 
     reconnect()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [storeConnect]) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function connect() {
     setConnecting(true)
@@ -76,11 +72,7 @@ export function useWallet(): UseWalletReturn {
         dappName: 'StarkZap',
       })
 
-      if (
-        result &&
-        result.wallet &&
-        result.connectorData?.account
-      ) {
+      if (result?.wallet && result.connectorData?.account) {
         setWallet(result.wallet)
         storeConnect(result.connectorData.account)
       }
@@ -115,7 +107,12 @@ export function useWallet(): UseWalletReturn {
       // StarkZap SDK: Privy social login — gasless wallet creation
       const result = await starkzap.initializeWallet(email)
       storeConnect(result.address)
-      console.log('[StarkZap SDK] Email wallet connected:', result.address, '| Status:', result.status)
+      console.log(
+        '[StarkZap SDK] Email wallet connected:',
+        result.address,
+        '| Status:',
+        result.status
+      )
     } catch (_error: unknown) {
       // StarkZap SDK: email login failed — user can retry
     } finally {

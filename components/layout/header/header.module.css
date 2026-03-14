@@ -10,48 +10,60 @@
   padding: 0 var(--safe);
   box-sizing: border-box;
   height: var(--header-height);
-  background-color: var(--color-c1);
+  background-color: oklch(0.162 0 0 / 0.85);
   border-bottom: 1px solid var(--color-c4);
-  backdrop-filter: blur(12px);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--font-sans);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: -0.02em;
   color: var(--color-c12);
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) {
+  .logo:hover {
+    opacity: 0.8;
+  }
 }
 
 .logoIcon {
-  color: var(--color-c12);
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
+  filter: saturate(0) brightness(2);
 }
 
 .connectButton {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
-  border-radius: 0;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 6px;
   border: 1px solid var(--color-c4);
   background-color: var(--color-c2);
   color: var(--color-c12);
-  font-family: var(--font-geist-mono, ui-monospace, monospace);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: -0.01em;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .connectButton:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -62,45 +74,60 @@
   }
 }
 
+.connectButton:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
 .walletInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .walletAddress {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 10px;
+  height: 32px;
+  padding: 0 10px;
   border: 1px solid var(--color-c4);
   background-color: var(--color-c2);
-  color: var(--color-c12);
-  font-family: var(--font-geist-mono, ui-monospace, monospace);
-  font-size: 13px;
+  color: var(--color-c11);
+  font-family: var(--font-mono);
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0;
-  border-radius: 0;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
 }
 
 .disconnectButton {
-  padding: 6px 10px;
-  border-radius: 0;
-  border: 1px solid var(--color-c4);
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
   background-color: transparent;
-  color: var(--color-c11);
-  font-family: var(--font-geist-mono, ui-monospace, monospace);
+  color: var(--color-c8);
+  font-family: var(--font-sans);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 @media (hover: hover) {
   .disconnectButton:hover {
+    color: var(--color-c11);
     background-color: var(--color-c3);
-    border-color: var(--color-c6);
+    border-color: var(--color-c4);
   }
+}
+
+.disconnectButton:active {
+  transform: scale(0.97);
 }
 
 .walletDot {
@@ -108,8 +135,50 @@
   height: 6px;
   border-radius: 50%;
   background-color: var(--color-c6);
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .walletDot.isConnected {
-  background-color: var(--color-c11);
+  background-color: oklch(0.72 0.17 142);
+}
+
+/* Mobile: ensure touch targets and fit */
+@media (max-width: 639px) {
+  .header {
+    padding: 0 12px;
+  }
+
+  .logo {
+    font-size: 15px;
+    gap: 4px;
+  }
+
+  .connectButton {
+    height: 44px;
+    min-width: 44px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .walletAddress {
+    height: 44px;
+    padding: 0 10px;
+    font-size: 11px;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .walletInfo {
+    gap: 4px;
+  }
+
+  .disconnectButton {
+    height: 44px;
+    min-width: 44px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
 }

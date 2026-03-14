@@ -9,8 +9,7 @@
  * exactly what the SDK call would do.
  */
 
-import type { StarkSDK } from 'starkzap'
-import type { WalletInterface } from 'starkzap'
+import type { StarkSDK, WalletInterface } from 'starkzap'
 
 // ---------------------------------------------------------------------------
 // Configuration
@@ -110,7 +109,9 @@ class StarkZapService {
       console.log('[StarkZap SDK] Staking contract:', STAKING_CONTRACT)
     } catch (_error: unknown) {
       // StarkZap SDK: graceful fallback for hackathon demo
-      console.log('[StarkZap SDK] Running in demo mode -- SDK calls will be simulated')
+      console.log(
+        '[StarkZap SDK] Running in demo mode -- SDK calls will be simulated'
+      )
       console.log('[StarkZap SDK] Would initialize with:', {
         network: 'sepolia',
         stakingContract: STAKING_CONTRACT,
@@ -160,7 +161,10 @@ class StarkZapService {
 
     // StarkZap SDK: mock fallback for hackathon demo
     await delay(800)
-    const mockAddress = `0x0${email.replace(/[^a-z0-9]/gi, '').slice(0, 10).padEnd(10, '0')}${'0'.repeat(53)}`
+    const mockAddress = `0x0${email
+      .replace(/[^a-z0-9]/gi, '')
+      .slice(0, 10)
+      .padEnd(10, '0')}${'0'.repeat(53)}`
 
     console.log('[StarkZap SDK] initializeWallet() called with:', {
       strategy: 'OnboardStrategy.Privy',
@@ -183,7 +187,7 @@ class StarkZapService {
    */
   async stakeIntoChallengePool(
     challengeId: string,
-    amount: number,
+    amount: number
   ): Promise<StakeResult> {
     await this.initialize()
 
@@ -195,18 +199,27 @@ class StarkZapService {
         const { Amount, fromAddress } = await import('starkzap')
 
         // StarkZap SDK: Amount.parse(value, decimals, symbol) for WBTC
-        const stakeAmount = Amount.parse(amount.toString(), WBTC_DECIMALS, WBTC_SYMBOL)
+        const stakeAmount = Amount.parse(
+          amount.toString(),
+          WBTC_DECIMALS,
+          WBTC_SYMBOL
+        )
 
         // StarkZap SDK: gasless via AVNU Paymaster (feeMode: "sponsored")
         const tx = await this.walletInstance.stake(
           fromAddress(poolAddress),
           stakeAmount,
-          { feeMode: 'sponsored' },
+          { feeMode: 'sponsored' }
         )
 
         await tx.wait()
 
-        console.log('[StarkZap SDK] Staked', amount, 'WBTC into pool:', poolAddress)
+        console.log(
+          '[StarkZap SDK] Staked',
+          amount,
+          'WBTC into pool:',
+          poolAddress
+        )
         console.log('[StarkZap SDK] Tx hash:', tx.hash)
         console.log('[StarkZap SDK] Fee mode: sponsored (gasless via AVNU)')
 
@@ -261,7 +274,7 @@ class StarkZapService {
 
         const tx = await this.walletInstance.claimPoolRewards(
           fromAddress(poolAddress),
-          { feeMode: 'sponsored' },
+          { feeMode: 'sponsored' }
         )
 
         await tx.wait()

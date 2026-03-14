@@ -6,7 +6,13 @@
 }
 
 .header {
-  padding: 40px 32px 32px;
+  padding: 48px 32px 32px;
+}
+
+@media (max-width: 639px) {
+  .header {
+    padding: 40px 20px 28px;
+  }
 }
 
 .label {
@@ -43,6 +49,12 @@
   padding: 32px 24px;
 }
 
+@media (max-width: 639px) {
+  .step {
+    padding: 28px 20px;
+  }
+}
+
 /* Vertical dividers between steps on desktop */
 @media (min-width: 640px) {
   .step + .step {
@@ -75,7 +87,7 @@
 }
 
 .stepDesc {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 14px;
   font-family: var(--font-sans);
   color: var(--color-c8);
@@ -86,7 +98,9 @@
 .fadeUp {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fadeUp.isVisible {

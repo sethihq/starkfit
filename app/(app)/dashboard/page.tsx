@@ -1,13 +1,12 @@
 'use client'
 
-import { Wrapper } from '@/components/layout/wrapper'
-import { Link } from '@/components/ui/link'
-import { Button } from '@/components/ui/button'
-import { StatCard } from '@/components/ui/stat-card'
 import { ChallengeStatus } from '@/components/dashboard/challenge-status'
 import { DailyProgress } from '@/components/dashboard/daily-progress'
-import { StreakTracker } from '@/components/dashboard/streak-tracker'
 import { DemoControls } from '@/components/dashboard/demo-controls'
+import { StreakTracker } from '@/components/dashboard/streak-tracker'
+import { Button } from '@/components/ui/button'
+import { Link } from '@/components/ui/link'
+import { StatCard } from '@/components/ui/stat-card'
 import { useChallengeStore } from '@/hooks/use-challenge-store'
 import { calculatePrizePool, getActiveParticipants } from '@/utils/challenge'
 import { formatBTC } from '@/utils/format'
@@ -18,7 +17,7 @@ const USER_PARTICIPANT_ID = 'participant-0'
 function DashboardContent() {
   const challenges = useChallengeStore((state) => state.challenges)
   const activeChallengeId = useChallengeStore(
-    (state) => state.activeChallengeId,
+    (state) => state.activeChallengeId
   )
 
   const challenge = challenges.find((c) => c.id === activeChallengeId)
@@ -41,7 +40,7 @@ function DashboardContent() {
   }
 
   const participant = challenge.participants.find(
-    (p) => p.id === USER_PARTICIPANT_ID,
+    (p) => p.id === USER_PARTICIPANT_ID
   )
 
   if (!participant) {
@@ -87,6 +86,7 @@ function DashboardContent() {
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M10 2.667C10 2.667 9.333 2 8 2S6 2.667 6 2.667M4 14h8M6 14v-2.667M10 14v-2.667M8 2v2M5.333 4h5.334c.736 0 1.333.597 1.333 1.333v2.667c0 1.473-1.194 2.667-2.667 2.667H6.667A2.667 2.667 0 014 8V5.333C4 4.597 4.597 4 5.333 4z"
@@ -108,6 +108,7 @@ function DashboardContent() {
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M11 14v-1.333A2.667 2.667 0 008.333 10H3.667A2.667 2.667 0 001 12.667V14M14.667 14v-1.333a2.667 2.667 0 00-2-2.58M10.333 2.087a2.667 2.667 0 010 5.16M6 7.333A2.667 2.667 0 106 2a2.667 2.667 0 000 5.333z"
@@ -129,6 +130,7 @@ function DashboardContent() {
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M8 1.333v13.334M11.333 3.333H6.333a2 2 0 000 4h3.334a2 2 0 010 4H4"
@@ -150,6 +152,7 @@ function DashboardContent() {
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M14 4l-4.667 4.667L6.667 6 2 10.667M14 4h-4M14 4v4"
@@ -175,12 +178,10 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Wrapper theme="dark" lenis={{}}>
-      <div className={s.page}>
-        <div className={s.content}>
-          <DashboardContent />
-        </div>
+    <div className={s.page}>
+      <div className={s.content}>
+        <DashboardContent />
       </div>
-    </Wrapper>
+    </div>
   )
 }

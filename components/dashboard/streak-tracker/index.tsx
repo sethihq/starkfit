@@ -1,8 +1,8 @@
 'use client'
 
 import cn from 'clsx'
-import { useEffect, useRef } from 'react'
 import type { ComponentProps } from 'react'
+import { useEffect, useRef } from 'react'
 import type { Challenge, Participant } from '@/hooks/use-challenge-store'
 import s from './streak-tracker.module.css'
 
@@ -17,7 +17,7 @@ function getDayStatus(
   dayIndex: number,
   currentDay: number,
   stepHistory: number[],
-  dailyStepTarget: number,
+  dailyStepTarget: number
 ): DayStatus {
   const dayNumber = dayIndex + 1
 
@@ -112,14 +112,14 @@ export function StreakTracker({
         inline: 'center',
       })
     }
-  }, [challenge.currentDay])
+  }, [])
 
   const days = Array.from({ length: challenge.duration }, (_, i) => {
     const status = getDayStatus(
       i,
       challenge.currentDay,
       participant.stepHistory,
-      challenge.dailyStepTarget,
+      challenge.dailyStepTarget
     )
     return { dayNumber: i + 1, status }
   })
@@ -140,7 +140,7 @@ export function StreakTracker({
                 day.status === 'completed' && s.isCompleted,
                 day.status === 'failed' && s.isFailed,
                 day.status === 'current' && s.isCurrent,
-                day.status === 'future' && s.isFuture,
+                day.status === 'future' && s.isFuture
               )}
             >
               {day.status === 'completed' && <CheckIcon />}

@@ -1,9 +1,9 @@
 import cn from 'clsx'
-import type { Challenge } from '@/hooks/use-challenge-store'
-import { formatBTC, formatDuration, formatSteps } from '@/utils/format'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/components/ui/link'
+import type { Challenge } from '@/hooks/use-challenge-store'
+import { formatBTC, formatDuration, formatSteps } from '@/utils/format'
 import s from './challenge-card.module.css'
 
 interface ChallengeCardProps {

@@ -10,10 +10,11 @@
 
 .title {
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  font-family: var(--font-mono);
 }
 
 .track {
@@ -46,7 +47,9 @@
   font-size: 0;
   border: 2px solid var(--color-c4);
   background-color: transparent;
-  transition: background-color 200ms ease, border-color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
 }
 
 .isCompleted {
@@ -92,4 +95,30 @@
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .root {
+    padding: 16px;
+  }
+
+  .track {
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .circle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .isCurrent .icon {
+    width: 6px;
+    height: 6px;
+  }
 }

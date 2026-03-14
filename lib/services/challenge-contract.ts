@@ -21,7 +21,7 @@ function delay(ms: number): Promise<void> {
 }
 
 export async function joinChallenge(
-  _challengeId: string,
+  _challengeId: string
 ): Promise<{ txHash: string }> {
   await delay(1200 + Math.random() * 800)
   return { txHash: generateTxHash() }
@@ -29,14 +29,14 @@ export async function joinChallenge(
 
 export async function submitDailySteps(
   _challengeId: string,
-  _steps: number,
+  _steps: number
 ): Promise<boolean> {
   await delay(1000 + Math.random() * 1000)
   return true
 }
 
 export async function claimReward(
-  _challengeId: string,
+  _challengeId: string
 ): Promise<{ txHash: string; amount: number }> {
   await delay(1500 + Math.random() * 500)
   return {

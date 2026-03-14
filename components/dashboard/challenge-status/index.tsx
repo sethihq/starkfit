@@ -3,8 +3,8 @@
 import cn from 'clsx'
 import type { ComponentProps } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { useCountdown } from '@/hooks/use-countdown'
 import type { Challenge } from '@/hooks/use-challenge-store'
+import { useCountdown } from '@/hooks/use-countdown'
 import { getDayNumber } from '@/utils/challenge'
 import s from './challenge-status.module.css'
 

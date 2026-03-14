@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useChallengeStore } from '@/hooks/use-challenge-store'
+import { ChallengeCard } from '@/components/challenges/challenge-card'
 import {
   ChallengeFilters,
   type FilterValue,
 } from '@/components/challenges/challenge-filters'
-import { ChallengeCard } from '@/components/challenges/challenge-card'
+import { useChallengeStore } from '@/hooks/use-challenge-store'
 import s from './challenges.module.css'
 
 export default function ChallengesPage() {

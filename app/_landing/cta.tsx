@@ -23,7 +23,7 @@ export function CtaSection() {
           }
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.2 }
     )
 
     observer.observe(section)

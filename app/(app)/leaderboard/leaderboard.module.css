@@ -11,12 +11,12 @@
   max-width: 960px;
   margin-inline: auto;
   padding-inline: 24px;
-  padding-top: 48px;
-  padding-bottom: 64px;
+  padding-top: 32px;
+  padding-bottom: 80px;
 }
 
 .header {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .title {
@@ -26,13 +26,14 @@
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--color-c12);
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
 .subtitle {
   font-size: 14px;
   color: var(--color-c9);
   line-height: 1.5;
+  margin: 0;
 }
 
 .challengeName {
@@ -47,22 +48,25 @@
 
 /* Challenge selector */
 .selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-bottom: 24px;
 }
 
 .selectorLabel {
+  display: block;
   font-size: 11px;
   font-family: var(--font-mono);
-  color: var(--color-c9);
+  color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 8px;
 }
 
 .selectorSelect {
   appearance: none;
   background-color: var(--color-c2);
-  border: 1px solid var(--color-c3);
+  border: 1px solid var(--color-c4);
   color: var(--color-c12);
   font-size: 14px;
   font-family: var(--font-mono);
@@ -84,23 +88,23 @@
 /* Summary stats */
 .summary {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   margin-top: 24px;
-  padding: 16px 20px;
+  padding: 20px 24px;
   background-color: var(--color-c2);
-  border: 1px solid var(--color-c3);
+  border: 1px solid var(--color-c4);
 }
 
 .summaryItem {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .summaryLabel {
   font-size: 11px;
   font-family: var(--font-mono);
-  color: var(--color-c9);
+  color: var(--color-c8);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -110,6 +114,7 @@
   font-weight: 600;
   font-family: var(--font-mono);
   color: var(--color-c12);
+  font-variant-numeric: tabular-nums;
 }
 
 .summaryValueAccent {
@@ -120,17 +125,34 @@
 @media (max-width: 639px) {
   .content {
     padding-inline: 16px;
-    padding-top: 32px;
-    padding-bottom: 48px;
+    padding-top: 24px;
+    padding-bottom: 80px;
   }
 
   .title {
     font-size: 22px;
   }
 
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .selectorSelect {
+    max-width: none;
+    width: 100%;
+    min-height: 44px;
+  }
+
   .summary {
     flex-direction: column;
-    gap: 12px;
-    padding: 14px 16px;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .summaryItem {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
   }
 }

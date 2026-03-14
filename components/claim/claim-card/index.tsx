@@ -1,8 +1,8 @@
 'use client'
 
 import cn from 'clsx'
-import type { Challenge } from '@/hooks/use-challenge-store'
 import { AnimatedNumber } from '@/components/ui/animated-number'
+import type { Challenge } from '@/hooks/use-challenge-store'
 import { formatBTC, formatSteps } from '@/utils/format'
 import s from './claim-card.module.css'
 
@@ -31,15 +31,14 @@ export function ClaimCard({
       <p className={s.challengeName}>{challenge.name}</p>
 
       <div className={s.prizeAmount}>
-        <AnimatedNumber
-          value={prizeAmount}
-          formatFn={(n) => formatBTC(n)}
-        />
+        <AnimatedNumber value={prizeAmount} formatFn={(n) => formatBTC(n)} />
       </div>
 
       <div className={s.statsGrid}>
         <div className={s.statItem}>
-          <div className={s.statValue}>{streakDays}/{challenge.duration}</div>
+          <div className={s.statValue}>
+            {streakDays}/{challenge.duration}
+          </div>
           <div className={s.statLabel}>Streak Days</div>
         </div>
         <div className={s.statItem}>
@@ -60,6 +59,7 @@ export function ClaimCard({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <circle
                 cx="12"
